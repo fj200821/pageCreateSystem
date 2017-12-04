@@ -17,7 +17,7 @@ class Page extends Component {
             defaultData: {
                 name:"图片1",
                 placeholder:"请选择图片1",
-                editer:"editer-img",//标题组件
+                editer:"pic-editer",//标题组件
                 value:"",
                 html:htmlTpl({imgUrl:'//static.adbaitai.com/Website/Img/logo.png'})
             }

@@ -37,7 +37,3 @@ Gdata.add = function(data){
     this.data.push(data);
     window.sendMessage('updateIframe');
 };
-
-window.addEventListener('load',()=>{
-    window.sendMessage('updateIframe');
-});

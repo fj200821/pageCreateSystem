@@ -10,6 +10,11 @@ message.config({
     duration: 1,
 });
 
+window.onbeforeunload = function () {
+    return "Are you sure";
+};
+
+
 class Page extends Component {
     editInfo(){
         window.sendMessage('/editer/info-editer.js:edit',Gdata.info,function(data){

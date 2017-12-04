@@ -8,7 +8,10 @@ class Iframe extends Component{
         this._setIframe();
         window.onMessage('updateIframe',()=>{
             this.updateIframe();
-        })
+        });
+        window.addEventListener('load',()=>{
+            window.sendMessage('updateIframe');
+        });
     }
 
     _bindEditer(){
