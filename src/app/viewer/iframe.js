@@ -16,7 +16,7 @@ class Iframe extends Component{
           $(contentBody).on('click','.J_editer',function(){
               let info = JSON.parse(decodeURIComponent($(this).data('info')));
               let order = Number($(this).data('order'));
-              window.sendMessage('/editer/pic-editer/index.js:edit',{info:info,order:order},(info)=>{
+              window.sendMessage('/editer/'+info.editer+'/index.js:edit',{info:info,order:order},(info)=>{
                   $(this).html(info.html);
                   $(this).data('info',encodeURIComponent(JSON.stringify(info)));
                   Gdata.data[order]=info;
@@ -28,7 +28,7 @@ class Iframe extends Component{
         let iframe = document.createElement('iframe');
         iframe.className='viewer-iframe';
         this.iframe = iframe;
-        this.setIframe = function(){};
+        this._setIframe = function(){};
     }
 
     _initIframe(){

@@ -22,9 +22,9 @@ class Page extends Component{
     }
 
     render(){
-        return <div>
+        return <div className="icons">
             {this.state.icons.map((icon,key)=>{
-                return icon;
+                return <div className="icon">{icon}</div>;
             })}
         </div>
     }

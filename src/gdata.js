@@ -26,7 +26,7 @@ window.Gdata = {
         },{
             name:"图片1",
             placeholder:"请选择图片1",
-            editer:"editer-img",//标题组件
+            editer:"pic-editer",//标题组件
             value:"",
             html:'<img src="http://static.adbaitai.com/Website/Img/logo.png">sdf</img>'
         }
