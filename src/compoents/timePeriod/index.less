@@ -1,0 +1,112 @@
+:global {
+  .time {
+    color: #666;
+    user-select: none;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    div, dt, dd {
+      line-height: 30px;
+    }
+    .time-header-tip {
+      padding: 5px
+    }
+    .time-header {
+      border-top: 1px solid #dedede;
+      border-left: 1px solid #dedede;
+      border-right: 1px solid #dedede;
+      overflow: hidden;
+      .time-header-nav {
+        width: 100px;
+        height: 62px;
+        float: left;
+        overflow: hidden;
+        border-bottom: 1px solid #dedede;
+        border-right: 1px solid #dedede;
+        position: relative;
+        b {
+          position: absolute;
+        }
+        b:nth-child(1) {
+          top: 10px;
+          right: 20px;
+        }
+        b:nth-child(2) {
+          left: 20px;
+          bottom: 10px;
+        }
+      }
+      .time-header-nav:after {
+        position: absolute;
+        content: '';
+        display: block;
+        width: 120%;
+        height: 1px;
+        background-color: #dedede;
+        transform-origin: 0;
+        transform: rotate(32deg);
+      }
+      .time-header-ele {
+        overflow: hidden;
+        text-align: center;
+        line-height: 30px;
+        border-bottom: 1px solid #dedede;
+        width: 384px;
+        dl:last-child {
+          dt {
+            border-right: none;
+          }
+          dd:last-child {
+            border-right: none;
+          }
+        }
+        dl {
+          width: 50%;
+          float: left;
+          display: block;
+          dt {
+            width: 100%;
+            border-bottom: 1px solid #dedede;
+            border-right: 1px solid #dedede;
+          }
+        }
+        dd {
+          float: left;
+          width: 16px;
+          display: block;
+          border-right: 1px solid #dedede;
+        }
+      }
+    }
+    .time-body {
+      text-align: center;
+      cursor: pointer;
+      overflow: hidden;
+      border-left: 1px solid #dedede;
+      border-right: 1px solid #dedede;
+      dl > dd:last-child {
+        border-right: none
+      }
+      dt {
+        width: 100px;
+        height: 32px;
+        float: left;
+        border-right: 1px solid #dedede;
+        border-bottom: 1px solid #dedede;
+      }
+      dd {
+        float: left;
+        width: 16px;
+        background-color: #fff8d6;
+        height: 32px;
+        border-bottom: 1px solid #dedede;
+        border-right: 1px solid #dedede;
+      }
+      dd.active {
+        background-color: #61c2ee;
+      }
+    }
+  }
+}

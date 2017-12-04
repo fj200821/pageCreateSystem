@@ -1,0 +1,124 @@
+{
+  "success": true,
+  "data": {
+    "list": [
+      {
+        "id": 1402,
+        "mediaName": "wurenzhi测试1",
+        "pitName": "1127测试1"
+      },
+      {
+        "id": 1401,
+        "mediaName": "wurenzhi测试1",
+        "pitName": "1127测试1",
+        "shieldIds": [
+          146,
+          115
+        ],
+        "prior": false
+      },
+      {
+        "id": 1400,
+        "mediaName": "杭州王宇飞有限公司",
+        "pitName": "得到的",
+        "shieldIds": [
+          1,
+          1,
+          2,
+          3,
+          4
+        ],
+        "prior": true,
+        "pitShieldIndustryName": ""
+      },
+      {
+        "id": 553,
+        "mediaName": " 北京鸿途信达科技股份有限公司",
+        "pitName": "嘿嘿新闻--安卓banner"
+      },
+      {
+        "id": 552,
+        "mediaName": "天津快友世纪科技有限公司",
+        "pitName": "疯狂暴龙"
+      },
+      {
+        "id": 551,
+        "mediaName": "杭州汇茂科技有限公司",
+        "pitName": "汇茂-18"
+      },
+      {
+        "id": 550,
+        "mediaName": "杭州汇茂科技有限公司",
+        "pitName": "汇茂-17"
+      },
+      {
+        "id": 549,
+        "mediaName": "杭州汇茂科技有限公司",
+        "pitName": "汇茂-16"
+      },
+      {
+        "id": 548,
+        "mediaName": "杭州汇茂科技有限公司",
+        "pitName": "汇茂-15"
+      },
+      {
+        "id": 547,
+        "mediaName": "天津快友世纪科技有限公司",
+        "pitName": "疯狂暴龙"
+      },
+      {
+        "id": 546,
+        "mediaName": "杭州百泰文化传媒",
+        "pitName": "芸品绿展示广告"
+      },
+      {
+        "id": 545,
+        "mediaName": "北京酷划在线网络技术有限公司",
+        "pitName": "淘新闻热搜2"
+      },
+      {
+        "id": 544,
+        "mediaName": "天津快友世纪科技有限公司",
+        "pitName": "时尚快报"
+      },
+      {
+        "id": 543,
+        "mediaName": "杭州百泰文化传媒",
+        "pitName": "WIFI万能钥匙"
+      },
+      {
+        "id": 542,
+        "mediaName": "杭州百泰文化传媒",
+        "pitName": "新浪"
+      },
+      {
+        "id": 541,
+        "mediaName": "杭州汇茂科技有限公司",
+        "pitName": "汇茂-14"
+      },
+      {
+        "id": 540,
+        "mediaName": "成都创享云盟科技有限公司",
+        "pitName": "bnaner-贝壳"
+      },
+      {
+        "id": 539,
+        "mediaName": "喀什金橙子网络科技有限公司",
+        "pitName": "banner4"
+      },
+      {
+        "id": 538,
+        "mediaName": "杭州百泰文化传媒",
+        "pitName": "惠头条直投-2"
+      },
+      {
+        "id": 537,
+        "mediaName": "天津快友世纪科技有限公司",
+        "pitName": "暴雪资讯"
+      }
+    ],
+    "pageNo": 1,
+    "pageSize": 20,
+    "totalCount": 538
+  }
+}

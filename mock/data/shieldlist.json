@@ -1,0 +1,407 @@
+{
+  "success": true,
+  "data": {
+    "list": [
+      {
+        "id": 147,
+        "title": "test1028-2",
+        "shieldIndustryIds": [
+          2001,
+          2002,
+          2003,
+          2004,
+          2005,
+          2006,
+          2007,
+          2000
+        ],
+        "shieldPeriod": "",
+        "shieldRegionIds": "12,1301",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-28"
+      },
+      {
+        "id": 146,
+        "title": "test1028",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000
+        ],
+        "shieldPeriod": "000000000000000000000000,111111111111111111111111,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000",
+        "shieldRegionIds": "11",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-28"
+      },
+      {
+        "id": 145,
+        "title": "sfsdf",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000,
+          2001
+        ],
+        "shieldPeriod": "",
+        "shieldRegionIds": "11,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-27"
+      },
+      {
+        "id": 144,
+        "title": "省份胜多负少的",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000,
+          6001,
+          6002,
+          6003,
+          6004,
+          6005,
+          6006,
+          6000,
+          17001,
+          17000,
+          18001,
+          18002,
+          18003,
+          18004,
+          18005,
+          18006,
+          18007,
+          18008,
+          18009,
+          18010,
+          18000
+        ],
+        "shieldPeriod": "001111010000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000",
+        "shieldRegionIds": "12,1301,5402,6101,6102,6108,11",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-23"
+      },
+      {
+        "id": 143,
+        "title": "省份胜多负少的",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000,
+          6001,
+          6002,
+          6003,
+          6004,
+          6005,
+          6006,
+          6000,
+          17001,
+          17000
+        ],
+        "shieldPeriod": "",
+        "shieldRegionIds": "12,5401,5402",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-23"
+      },
+      {
+        "id": 142,
+        "title": "省份胜多负少的",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000,
+          17001,
+          17000
+        ],
+        "shieldPeriod": "",
+        "shieldRegionIds": "12,5401",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-23"
+      },
+      {
+        "id": 141,
+        "title": "省份胜多负少的",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000,
+          17001,
+          17000
+        ],
+        "shieldPeriod": "",
+        "shieldRegionIds": "",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-23"
+      },
+      {
+        "id": 140,
+        "title": "sdfsdfsdf",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000
+        ],
+        "shieldPeriod": "",
+        "shieldRegionIds": "12",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-23"
+      },
+      {
+        "id": 139,
+        "title": "sdfsdfsdf",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000
+        ],
+        "shieldPeriod": "",
+        "shieldRegionIds": "12",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-23"
+      },
+      {
+        "id": 138,
+        "title": "省份胜多负少的",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000
+        ],
+        "shieldPeriod": "100000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000",
+        "shieldRegionIds": "12",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-23"
+      },
+      {
+        "id": 137,
+        "title": "省份胜多负少的",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000
+        ],
+        "shieldPeriod": "011111000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000",
+        "shieldRegionIds": "12",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-23"
+      },
+      {
+        "id": 136,
+        "title": "sdfsdf",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000
+        ],
+        "shieldPeriod": "",
+        "shieldRegionIds": "11",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-22"
+      },
+      {
+        "id": 135,
+        "title": "sdfsdf",
+        "shieldIndustryIds": [],
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-22"
+      },
+      {
+        "id": 134,
+        "title": "dgdfg",
+        "shieldIndustryIds": [],
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-22"
+      },
+      {
+        "id": 133,
+        "title": "67890",
+        "shieldIndustryIds": [
+          1001,
+          1002,
+          1003,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          1009,
+          1000
+        ],
+        "shieldPeriod": "000001111111011110000000,000000000011010010000000,000000000100111001011100,000000010110110000000100,000001001111000000001100,000001111000000000010000,000000000000000000000000",
+        "shieldRegionIds": "",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-16"
+      },
+      {
+        "id": 132,
+        "title": "345678",
+        "shieldIndustryIds": [
+          18001,
+          18002,
+          18003,
+          18004,
+          18005,
+          18006,
+          18007,
+          18008,
+          18009,
+          18010,
+          18000
+        ],
+        "shieldPeriod": "110101001001000000000000,000000000000001011110000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000",
+        "shieldRegionIds": "11",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-16"
+      },
+      {
+        "id": 131,
+        "title": "12345678",
+        "shieldIndustryIds": [
+          6001,
+          6002,
+          6003,
+          6004,
+          6005,
+          6006,
+          6000
+        ],
+        "shieldPeriod": "000111010010110000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000",
+        "shieldRegionIds": "11",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-16"
+      },
+      {
+        "id": 130,
+        "title": "测试呵呵",
+        "shieldIndustryIds": [
+          1001
+        ],
+        "shieldPeriod": "000011000000000000000000,000000110000000000000000,000000011000000000000000,000010111000000000000000,011000000000000000000000,000000000000000000000000,000000000000000000000000",
+        "shieldRegionIds": "4301",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-16"
+      },
+      {
+        "id": 129,
+        "title": "测试啊23",
+        "shieldIndustryIds": [
+          2001
+        ],
+        "shieldPeriod": "001111010000000000000000,000000000101011110000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000",
+        "shieldRegionIds": "4301,4309",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-16"
+      },
+      {
+        "id": 128,
+        "title": "cesh",
+        "shieldIndustryIds": [
+          3001
+        ],
+        "shieldPeriod": "000000100000000000000000,000011011111000000000000,011111000011000011100000,011000000100101001100000,000000001010000011100100,000000111000010000000000,000000000000000000000000",
+        "shieldRegionIds": "11",
+        "isShieldIndustry": false,
+        "isShieldUrl": false,
+        "createTime": "2017-11-16"
+      }
+    ],
+    "pageNo": 1,
+    "pageSize": 20,
+    "totalCount": 29
+  }
+}
