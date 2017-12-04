@@ -39,6 +39,10 @@ const Util = {
     formItemLayout: {
         labelCol: {span: 4},
         wrapperCol: {span: 20},
+    },
+    tailFormItemLayout: {
+        labelCol: {span: 4},
+        wrapperCol: {span: 20,offset: 4},
     }
 };
 
