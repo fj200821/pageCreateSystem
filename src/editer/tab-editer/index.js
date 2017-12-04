@@ -15,13 +15,20 @@ class Page extends Component {
             callback: function () {
             },
             defaultData: {
-                name:"图片组件",
-                placeholder:"请选择图片1",
-                editer:"pic-editer",//标题组件
-                value:"",
-                html:htmlTpl({imgUrl:'//static.adbaitai.com/Website/Img/logo.png'})
+                name:"通栏",
+                placeholder:"通栏",
+                editer:"tab-editer",//标题组件
+                value:{
+                    action:0,
+                    data:'',
+                    imgUrl:'http://static.adbaitai.com/Website/Img/logo.png'
+                }
             }
         };
+        let value = JSON.parse(JSON.stringify(this.state.defaultData));
+        delete value.imgUrl;
+        value = encodeURIComponent(JSON.stringify(value));
+        this.state.defaultData.html = htmlTpl({info:value,imgUrl:this.state.defaultData.value.imgUrl});
         this.onMessage();
     }
 
@@ -36,7 +43,7 @@ class Page extends Component {
     }
 
     onMessage() {
-        window.onMessage("/editer/pic-editer/index.js:edit", (data, callback) => {
+        window.onMessage("/editer/tab-editer/index.js:edit", (data, callback) => {
             this.setState({
                 info:data.info,
                 callback:callback

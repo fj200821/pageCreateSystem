@@ -10,9 +10,9 @@ message.config({
     duration: 1,
 });
 
-window.onbeforeunload = function () {
-    return "Are you sure";
-};
+// window.onbeforeunload = function () {
+//     return "Are you sure";
+// };
 
 
 class Page extends Component {
@@ -26,8 +26,6 @@ class Page extends Component {
     render() {
         return <div className="m-nav">
             <a href="javascript:;" onClick={this.editInfo} className="nav"><Icon type="setting" className="icon"><span>页面设置</span></Icon></a>
-            <a href="javascript:;" className="nav"><Icon type="setting" className="icon"><span>页面设置</span></Icon></a>
-            <a href="javascript:;" className="nav"><Icon type="setting" className="icon"><span>页面设置</span></Icon></a>
         </div>
     }
 }

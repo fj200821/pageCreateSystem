@@ -12,11 +12,13 @@ class Page extends Component{
     }
 
     onMessage(){
+        let icons = [];
         window.onMessage('renderEditerIcon',(icon)=>{
-            let icons = JSON.parse(JSON.stringify(this.state.icons));
             icons.push(icon);
             this.setState({
                 icons:icons
+            },()=>{
+                icons=this.state.icons;
             })
         })
     }
