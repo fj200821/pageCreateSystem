@@ -11,13 +11,15 @@ class Page extends Component {
         super(props);
         this.state = {
             visible: false,
-            imgUrl:'',
+            picUrl:'',
             callback: function () {
             },
             defaultData: {
                 name:"图片组件",
                 type:"pic-editer",//标题组件
-                items:[{}],
+                items:[{
+                    "picUrl":"//static.adbaitai.com/Website/Img/logo.png"
+                }],
                 tpl:tpl
             }
         };
@@ -37,7 +39,7 @@ class Page extends Component {
     onMessage() {
         window.onMessage("/editer/pic-editer/index.js:edit", (data, callback) => {
             this.setState({
-                info:data.items,
+                items:data.items,
                 callback:callback
             });
             this.show();
@@ -58,14 +60,14 @@ class Page extends Component {
 
 
     handleSubmit = () => {
-        let info = JSON.parse(JSON.stringify(this.state.items));
-        info[0].imgUrl=this.state.imgUrl;
-        this.state.callback(info);
+        let items = JSON.parse(JSON.stringify(this.state.items));
+        items[0].picUrl=this.state.picUrl;
+        this.state.callback(items);
     }
 
     uploadBack=(data)=>{
         this.setState({
-            imgUrl:data.data.url
+            picUrl:data.data.url
         },()=>{
             this.handleSubmit();
         })

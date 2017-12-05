@@ -23,10 +23,12 @@
         window.Build = {
             render:function(){
                 var html='';
-                Gdata.components.forEach(function(component){
+                Gdata.components.forEach(function(component,order){
+                    var newHtml='';
                     component.items.forEach(function(item){
-                        html += ejs.render(component.tpl,{data:item});
-                    })
+                        newHtml += ejs.render(component.tpl,{data:item});
+                    });
+                    html += ('<div class="J_editer" data-component="'+encodeURIComponent(JSON.stringify(component))+'" data-order="'+order+'">'+newHtml+'</div>');
                 });
                 document.querySelector('.wrapper').innerHTML = html;
             },

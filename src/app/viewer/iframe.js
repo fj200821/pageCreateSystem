@@ -15,14 +15,14 @@ class Iframe extends Component {
     }
 
     _bindEditer() {
+        let self = this;
         let $ = contentWindow.$;
         $(contentBody).on('click', '.J_editer', function () {
-            let info = JSON.parse(decodeURIComponent($(this).data('info')));
+            let component = JSON.parse(decodeURIComponent($(this).data('component')));
             let order = Number($(this).data('order'));
-            window.sendMessage('/editer/' + info.editer + '/index.js:edit', {info: info, order: order}, (info) => {
-                $(this).html(info.html);
-                $(this).data('info', encodeURIComponent(JSON.stringify(info)));
-                Gdata.components[order] = info;
+            window.sendMessage('/editer/' + component.type + '/index.js:edit', {items: component.items, order: order}, (items) => {
+                Gdata.components[order].items = items;
+                self._updateIframe();
             })
         })
     }

@@ -1,1 +1,1 @@
-<img src="<%=data.imgUrl%>"/>
+<img src="<%=data.picUrl%>"/>
