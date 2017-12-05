@@ -4,7 +4,7 @@ import Util from '../../compoents/util/util';
 import Tab1 from './tab1';
 import Tab2 from './tab2';
 import Tab3 from './tab3';
-let htmlTpl = require('./html.ejs');
+let htmlTpl = require('./html.tpl');
 
 const FormItem = Form.Item;
 const TabPane = Tabs.TabPane;
@@ -29,7 +29,6 @@ class Page extends Component {
                 }]
             }
         };
-        this.state.defaultData.html = htmlTpl(this.state.defaultData.value);
         this.onMessage();
     }
 
@@ -46,7 +45,7 @@ class Page extends Component {
     onMessage() {
         window.onMessage("/editer/tab-editer/index.js:edit", (data, callback) => {
             this.setState({
-                info:data.info,
+                items:data.items,
                 callback:callback
             });
             this.show();
@@ -65,6 +64,10 @@ class Page extends Component {
         })
     }
 
+    tab1Callback=(value)=>{
+        this.state.callback(value);
+    }
+
     render() {
         const {visible, data} = this.state;
         let display = visible?'block':'none';
@@ -72,7 +75,7 @@ class Page extends Component {
             <div style={{display:display}}>
                 <Tabs defaultActiveKey="1" onChange={()=>{}}>
                     <TabPane tab="指定广告" key="1">
-                        <Tab1/>
+                        <Tab1 callback={this.tab1Callback()}/>
                     </TabPane>
                     <TabPane tab="链接" key="2">
                         <Tab2/>

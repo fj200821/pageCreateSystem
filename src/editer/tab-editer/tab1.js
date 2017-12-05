@@ -5,13 +5,16 @@ import Util from '../../compoents/util/util';
 const FormItem = Form.Item;
 
 class Tab1 extends Component{
+    constructor(props){
+        super(props);
+    }
     handleSubmit(){
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (err) {
                 console.log('Received values of form: ', values);
                 return;
             }
-            console.log(values);
+            this.props.callback(values);
         });
     }
     render(){

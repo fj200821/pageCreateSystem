@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>百泰文化</title>
+    <link rel="stylesheet" href="//assets.geilicdn.com/??v-components/cdn/0.0.4/commoncss/normalize.min.css"/>
+    <style type="text/css">
+        body, .wrapper {
+            background: no-repeat center top;
+        }
+
+        .wrapper {
+            min-height: 100%;
+        }
+        body{
+            width: 750px;
+            overflow-x:hidden;
+            zoom:0.5;
+        }
+    </style>
+    <script src="//imgcow.oss-cn-hangzhou.aliyuncs.com/prod/baitai-components/home/ejs.min.js"></script>
+    <script src="//oss.ltcdn.cc/game/Js/zepto.min.js"></script>
+    <script>
+        window.Gdata = {};
+        window.Build = {
+            render:function(){
+                var html='';
+                Gdata.components.forEach(function(component){
+                    component.items.forEach(function(item){
+                        html += ejs.render(component.tpl,{data:item});
+                    })
+                });
+                document.querySelector('.wrapper').innerHTML = html;
+            },
+            update:function(data){
+                Gdata = data;
+                this.render();
+            }
+        };
+    </script>
+</head>
+<body style="width: 750px;">
+<div class="wrapper"></div>
+</body>
+</html>

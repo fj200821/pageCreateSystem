@@ -32,7 +32,7 @@ const webpackConfig = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader'
             },
-            {test: /\.html$/, loader: 'html-loader'},
+            {test: /\.(html|tpl)$/, loader: 'html-loader'},
             {test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
             {test: /\.css/, loader: 'style-loader!css-loader'},
             {test: /\.ejs/, loader: 'ejs-loader?variable=data'}

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Form,Icon,Button} from 'antd';
 import Util from '../../compoents/util/util';
 import Upload from '../../compoents/upload';
-let htmlTpl = require('./html.ejs');
+let tpl = require('./html.tpl');
 
 const FormItem = Form.Item;
 
@@ -16,10 +16,9 @@ class Page extends Component {
             },
             defaultData: {
                 name:"图片组件",
-                placeholder:"请选择图片1",
-                editer:"pic-editer",//标题组件
-                value:"",
-                html:htmlTpl({imgUrl:'//static.adbaitai.com/Website/Img/logo.png'})
+                type:"pic-editer",//标题组件
+                items:[{}],
+                tpl:tpl
             }
         };
         this.onMessage();
@@ -38,7 +37,7 @@ class Page extends Component {
     onMessage() {
         window.onMessage("/editer/pic-editer/index.js:edit", (data, callback) => {
             this.setState({
-                info:data.info,
+                info:data.items,
                 callback:callback
             });
             this.show();
@@ -59,9 +58,8 @@ class Page extends Component {
 
 
     handleSubmit = () => {
-        let info = JSON.parse(JSON.stringify(this.state.info));
-        info.value=this.state.imgUrl;
-        info.html = htmlTpl({imgUrl:this.state.imgUrl});
+        let info = JSON.parse(JSON.stringify(this.state.items));
+        info[0].imgUrl=this.state.imgUrl;
         this.state.callback(info);
     }
 
