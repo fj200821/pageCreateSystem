@@ -37,12 +37,12 @@ const Util = {
         })
     },
     formItemLayout: {
-        labelCol: {span: 4},
-        wrapperCol: {span: 20},
+        labelCol: {span: 5},
+        wrapperCol: {span: 19},
     },
     tailFormItemLayout: {
-        labelCol: {span: 4},
-        wrapperCol: {span: 20,offset: 4},
+        labelCol: {span: 5},
+        wrapperCol: {span: 19,offset: 5},
     }
 };
 

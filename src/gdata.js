@@ -16,10 +16,10 @@ window.Gdata = {
             value:""
         }
     },
-    data:[]
+    components:[]
 };
 
 Gdata.add = function(data){
-    this.data.push(data);
+    this.components.push(data);
     window.sendMessage('updateIframe');
 };

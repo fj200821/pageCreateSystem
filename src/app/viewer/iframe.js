@@ -22,7 +22,7 @@ class Iframe extends Component{
               window.sendMessage('/editer/'+info.editer+'/index.js:edit',{info:info,order:order},(info)=>{
                   $(this).html(info.html);
                   $(this).data('info',encodeURIComponent(JSON.stringify(info)));
-                  Gdata.data[order]=info;
+                  Gdata.components[order]=info;
               })
           })
     }
@@ -57,9 +57,9 @@ class Iframe extends Component{
     updateIframe(){
         Gdata.info.bgColor.value && (contentBody.style['background-color']=Gdata.info.bgColor.value);
         Gdata.info.bgImg.value && (contentWrapper.style['background-image']='url('+Gdata.info.bgImg.value+')');
-        let items = Gdata.data;
-        let htmls = items.map((item,key)=>{
-            return '<div class="J_editer" data-info="'+encodeURIComponent(JSON.stringify(item))+'" data-order="'+key+'">'+item.html+'</div>';
+        let components = Gdata.components;
+        let htmls = components.map((component,key)=>{
+            return '<div class="J_editer" data-info="'+encodeURIComponent(JSON.stringify(component))+'" data-order="'+key+'">'+component.html+'</div>';
         });
         contentWrapper.innerHTML = htmls.join('');
     }
