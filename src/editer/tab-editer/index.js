@@ -64,20 +64,16 @@ class Page extends Component {
     }
 
 
-    handleSubmit = () => {
-        let info = JSON.parse(JSON.stringify(this.state.info));
-        info.value=this.state.imgUrl;
-        info.html = htmlTpl({imgUrl:this.state.imgUrl});
-        this.state.callback(info);
+    handleSubmit = (type) => {
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if (err) {
+                console.log('Received values of form: ', values);
+                return;
+            }
+            console.log(values);
+        });
     }
 
-    uploadBack=(data)=>{
-        this.setState({
-            imgUrl:data.data.url
-        },()=>{
-            this.handleSubmit();
-        })
-    }
 
     render() {
         const { getFieldDecorator } = this.props.form;
@@ -85,10 +81,9 @@ class Page extends Component {
         let display = visible?'block':'none';
         return (
             <div style={{display:display}}>
-                <Upload callback={this.uploadBack}/>
                 <Tabs defaultActiveKey="1" onChange={()=>{}}>
                     <TabPane tab="指定广告" key="1">
-                        <Form>
+                        <Form onSubmit={(e)=>{e.preventDefault();this.handleSubmit(0)}}>
                         <FormItem
                             label="广告计划"
                             {...Util.formItemLayout}
@@ -120,7 +115,7 @@ class Page extends Component {
                                 label="链接地址"
                                 {...Util.formItemLayout}
                             >
-                                {getFieldDecorator('pids', {
+                                {getFieldDecorator('link', {
                                 })(
                                     <Input placeholder="请输入链接地址"/>
                                 )}
@@ -138,7 +133,7 @@ class Page extends Component {
                                 label="游戏id"
                                 {...Util.formItemLayout}
                             >
-                                {getFieldDecorator('pids', {
+                                {getFieldDecorator('gameid', {
                                 })(
                                     <Input placeholder="请输入游戏id"/>
                                 )}
