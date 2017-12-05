@@ -17,9 +17,10 @@ class Iframe extends Component{
     _bindEditer(){
           let $ = contentWindow.$;
           $(contentBody).on('click','.J_editer',function(){
+              debugger
               let info = JSON.parse(decodeURIComponent($(this).data('info')));
               let order = Number($(this).data('order'));
-              window.sendMessage('/editer/'+info.editer+'/index.js:edit',{info:info,order:order},(info)=>{
+              window.sendMessage('/editer/'+info.items+'/index.js:edit',{info:info,order:order},(info)=>{
                   $(this).html(info.html);
                   $(this).data('info',encodeURIComponent(JSON.stringify(info)));
                   Gdata.data[order]=info;
@@ -58,6 +59,7 @@ class Iframe extends Component{
         Gdata.info.bgColor.value && (contentBody.style['background-color']=Gdata.info.bgColor.value);
         Gdata.info.bgImg.value && (contentWrapper.style['background-image']='url('+Gdata.info.bgImg.value+')');
         let items = Gdata.data;
+        console.log(items);
         let htmls = items.map((item,key)=>{
             return '<div class="J_editer" data-info="'+encodeURIComponent(JSON.stringify(item))+'" data-order="'+key+'">'+item.html+'</div>';
         });
