@@ -22,12 +22,10 @@
         window.Gdata = {};
         window.Build = {
             render:function(){
+                console.log(Gdata);
                 var html='';
                 Gdata.components.forEach(function(component,order){
-                    var newHtml='';
-                    component.items.forEach(function(item){
-                        newHtml += ejs.render(component.tpl,{data:item});
-                    });
+                    var newHtml=ejs.render(component.tpl,{items:component.items});
                     html += ('<div class="J_editer" data-component="'+encodeURIComponent(JSON.stringify(component))+'" data-order="'+order+'">'+newHtml+'</div>');
                 });
                 document.querySelector('.wrapper').innerHTML = html;

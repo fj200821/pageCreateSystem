@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Form, Icon, Button } from 'antd';
 import Util from '../../compoents/util/util';
 
-let htmlTpl = require('./html.ejs');
+let htmlTpl = require('./html.tpl');
 
 const FormItem = Form.Item;
 
@@ -22,6 +22,7 @@ class TwoTabPage extends Component {
                 name: '两栏',
                 placeholder: '两栏',
                 type: "two-tab-editer",
+                tpl:htmlTpl,
                 items: [
                     {
                         type:0,
@@ -49,7 +50,6 @@ class TwoTabPage extends Component {
             data.push(param);
         })
 
-        this.state.defaultData.html = htmlTpl(data);
         this.onMessage();
     }
 
