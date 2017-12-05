@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import { Form,Icon,Button} from 'antd';
+import { Form,Icon,Button,Tabs,Input,InputNumber} from 'antd';
 import Util from '../../compoents/util/util';
-import Upload from '../../compoents/upload';
-let htmlTpl = require('./html.ejs');
+import Tab1 from './tab1';
+import Tab2 from './tab2';
+import Tab3 from './tab3';
+let htmlTpl = require('./html.tpl');
 
 const FormItem = Form.Item;
+const TabPane = Tabs.TabPane;
+
 
 class Page extends Component {
     constructor(props) {
@@ -18,23 +22,19 @@ class Page extends Component {
                 name:"通栏",
                 placeholder:"通栏",
                 editer:"tab-editer",//标题组件
-                value:{
+                value:[{
                     action:0,
                     data:'',
                     imgUrl:'http://static.adbaitai.com/Website/Img/logo.png'
-                }
+                }]
             }
         };
-        let value = JSON.parse(JSON.stringify(this.state.defaultData));
-        delete value.imgUrl;
-        value = encodeURIComponent(JSON.stringify(value));
-        this.state.defaultData.html = htmlTpl({info:value,imgUrl:this.state.defaultData.value.imgUrl});
         this.onMessage();
     }
 
 
     componentDidMount() {
-        window.sendMessage('renderEditerIcon', <Icon type="picture" key="picEditerIcon" onClick={this.add}/>)
+        window.sendMessage('renderEditerIcon', <Icon type="info-circle" key="info-circle" onClick={this.add}/>)
     }
 
 
@@ -45,7 +45,7 @@ class Page extends Component {
     onMessage() {
         window.onMessage("/editer/tab-editer/index.js:edit", (data, callback) => {
             this.setState({
-                info:data.info,
+                items:data.items,
                 callback:callback
             });
             this.show();
@@ -64,20 +64,8 @@ class Page extends Component {
         })
     }
 
-
-    handleSubmit = () => {
-        let info = JSON.parse(JSON.stringify(this.state.info));
-        info.value=this.state.imgUrl;
-        info.html = htmlTpl({imgUrl:this.state.imgUrl});
-        this.state.callback(info);
-    }
-
-    uploadBack=(data)=>{
-        this.setState({
-            imgUrl:data.data.url
-        },()=>{
-            this.handleSubmit();
-        })
+    tab1Callback=(value)=>{
+        this.state.callback(value);
     }
 
     render() {
@@ -85,7 +73,17 @@ class Page extends Component {
         let display = visible?'block':'none';
         return (
             <div style={{display:display}}>
-                <Upload callback={this.uploadBack}/>
+                <Tabs defaultActiveKey="1" onChange={()=>{}}>
+                    <TabPane tab="指定广告" key="1">
+                        <Tab1 callback={this.tab1Callback()}/>
+                    </TabPane>
+                    <TabPane tab="链接" key="2">
+                        <Tab2/>
+                    </TabPane>
+                    <TabPane tab="游戏互动" key="3">
+                        <Tab3/>
+                    </TabPane>
+                </Tabs>
             </div>
         );
     }

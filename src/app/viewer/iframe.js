@@ -1,75 +1,63 @@
 import React, {Component} from 'react';
-let iframeHeaderHtml = require('./tpl/iframe-header.html');
-let contentDocument,contentBody,contentWindow,contentWrapper;
 
-class Iframe extends Component{
-    constructor(props){
+let contentDocument, contentBody, contentWindow, contentWrapper;
+
+class Iframe extends Component {
+    constructor(props) {
         super(props);
         this._setIframe();
-        window.onMessage('updateIframe',()=>{
-            this.updateIframe();
+        window.onMessage('updateIframe', () => {
+            this._updateIframe();
         });
-        window.addEventListener('load',()=>{
+        window.addEventListener('load', () => {
             window.sendMessage('updateIframe');
         });
     }
 
-    _bindEditer(){
-          let $ = contentWindow.$;
-          $(contentBody).on('click','.J_editer',function(){
-              debugger
-              let info = JSON.parse(decodeURIComponent($(this).data('info')));
-              let order = Number($(this).data('order'));
-              window.sendMessage('/editer/'+info.items+'/index.js:edit',{info:info,order:order},(info)=>{
-                  $(this).html(info.html);
-                  $(this).data('info',encodeURIComponent(JSON.stringify(info)));
-                  Gdata.data[order]=info;
-              })
-          })
+    _bindEditer() {
+        let self = this;
+        let $ = contentWindow.$;
+        $(contentBody).on('click', '.J_editer', function () {
+            let component = JSON.parse(decodeURIComponent($(this).data('component')));
+            let order = Number($(this).data('order'));
+            window.sendMessage('/editer/' + component.type + '/index.js:edit', {items: component.items, order: order}, (items) => {
+                Gdata.components[order].items = items;
+                self._updateIframe();
+            })
+        })
     }
 
-    _setIframe(){
+    _setIframe() {
         let iframe = document.createElement('iframe');
-        iframe.className='viewer-iframe';
+        iframe.className = 'viewer-iframe';
+        iframe.src = "/tpl/iframe.html";
         this.iframe = iframe;
-        this._setIframe = function(){};
+        this.iframe.onload = () => {
+            this._initIframe();
+            setTimeout(() => {
+                this._bindEditer();
+            }, 1000);
+        };
+        this._setIframe = function () {
+        };
     }
 
-    _initIframe(){
+    _initIframe() {
         let iframe = this.iframe;
-        iframe.contentDocument.head.innerHTML=iframeHeaderHtml;
         contentDocument = iframe.contentDocument;
         contentBody = iframe.contentDocument.body;
         contentWindow = iframe.contentWindow;
-        contentBody.style.width='750px';
-        contentBody.style.overflowX='hidden';
-        contentBody.style.zoom=0.5;
-        contentWrapper = document.createElement('div');
-        contentWrapper.className='wrapper';
-        contentBody.appendChild(contentWrapper);
-        let zeptoEl = document.createElement('script');
-        zeptoEl.src="//oss.ltcdn.cc/game/Js/zepto.min.js";
-        zeptoEl.onload = ()=>{
-            this._bindEditer();
-        };
-        contentDocument.head.appendChild(zeptoEl);
+        contentWrapper = contentDocument.querySelector('.wrapper');
     }
 
-    updateIframe(){
-        Gdata.info.bgColor.value && (contentBody.style['background-color']=Gdata.info.bgColor.value);
-        Gdata.info.bgImg.value && (contentWrapper.style['background-image']='url('+Gdata.info.bgImg.value+')');
-        let items = Gdata.data;
-        console.log(items);
-        let htmls = items.map((item,key)=>{
-            return '<div class="J_editer" data-info="'+encodeURIComponent(JSON.stringify(item))+'" data-order="'+key+'">'+item.html+'</div>';
-        });
-        contentWrapper.innerHTML = htmls.join('');
+
+    _updateIframe() {
+        contentWindow.Build.update(Gdata);
     }
 
-    iframeRender(viewerEl,data){
-        viewerEl.innerHTML='';
+    iframeRender(viewerEl, data) {
+        viewerEl.innerHTML = '';
         viewerEl.appendChild(this.iframe);
-        this._initIframe();
     }
 }
 
