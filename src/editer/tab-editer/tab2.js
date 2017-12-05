@@ -1,27 +1,48 @@
 import React, {Component} from 'react';
-import { Form,Icon,Button,Tabs,Input,InputNumber} from 'antd';
+import { Form,Icon,Button,Tabs,Input,InputNumber,message} from 'antd';
 import Util from '../../compoents/util/util';
+import Upload from '../../compoents/upload';
 
 const FormItem = Form.Item;
 
 class Tab2 extends Component{
+    constructor(props){
+        super(props);
+    }
     handleSubmit(){
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (err) {
                 console.log('Received values of form: ', values);
                 return;
             }
-            console.log(values);
+
+            if(!this.state.imgUrl){
+                message.error('请上传图片');
+                return;
+            }
+
+            this.props.callback({imgUrl:this.state.imgUrl,skipUrl:values.skipUrl});
         });
+    }
+    uploadBack=(res)=>{
+        this.setState({
+            imgUrl:res.data.url
+        })
     }
     render(){
         const { getFieldDecorator } = this.props.form;
         return <Form onSubmit={(e)=>{e.preventDefault();this.handleSubmit(0)}}>
             <FormItem
+                label="图片"
+                {...Util.formItemLayout}
+            >
+                <Upload callback={this.uploadBack}/>
+            </FormItem>
+            <FormItem
                 label="链接地址"
                 {...Util.formItemLayout}
             >
-                {getFieldDecorator('link', {
+                {getFieldDecorator('skipUrl', {
                     rules: [{ required: true}]
                 })(
                     <Input placeholder="请输入链接地址"/>

@@ -1,30 +1,51 @@
 import React, {Component} from 'react';
-import { Form,Icon,Button,Tabs,Input,InputNumber} from 'antd';
+import { Form,Icon,Button,Tabs,Input,InputNumber,message} from 'antd';
 import Util from '../../compoents/util/util';
+import Upload from '../../compoents/upload';
 
 const FormItem = Form.Item;
 
-class Tab3 extends Component{
+class Tab2 extends Component{
+    constructor(props){
+        super(props);
+    }
     handleSubmit(){
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (err) {
                 console.log('Received values of form: ', values);
                 return;
             }
-            console.log(values);
+
+            if(!this.state.imgUrl){
+                message.error('请上传图片');
+                return;
+            }
+
+            this.props.callback({imgUrl:this.state.imgUrl,gameId:values.gameId});
         });
+    }
+    uploadBack=(res)=>{
+        this.setState({
+            imgUrl:res.data.url
+        })
     }
     render(){
         const { getFieldDecorator } = this.props.form;
         return <Form onSubmit={(e)=>{e.preventDefault();this.handleSubmit(0)}}>
             <FormItem
+                label="图片"
+                {...Util.formItemLayout}
+            >
+                <Upload callback={this.uploadBack}/>
+            </FormItem>
+            <FormItem
                 label="游戏id"
                 {...Util.formItemLayout}
             >
-                {getFieldDecorator('gameid', {
+                {getFieldDecorator('gameId', {
                     rules: [{ required: true}]
                 })(
-                    <Input placeholder="请输入游戏id"/>
+                    <Input placeholder="游戏id"/>
                 )}
             </FormItem>
             <FormItem
@@ -36,4 +57,4 @@ class Tab3 extends Component{
     }
 }
 
-export default Form.create()(Tab3);
+export default Form.create()(Tab2);
