@@ -18,6 +18,7 @@ class Iframe extends Component {
         let self = this;
         let $ = contentWindow.$;
         $(contentBody).on('click', '.J_editer', function () {
+            window.sendMessage('hideEditer');
             let component = JSON.parse(decodeURIComponent($(this).data('component')));
             let order = Number($(this).data('order'));
             window.sendMessage('/editer/' + component.type + '/index.js:edit', {items: component.items, order: order}, (items) => {

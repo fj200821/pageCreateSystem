@@ -35,7 +35,7 @@ class Page extends Component {
 
 
     componentDidMount() {
-        window.sendMessage('renderEditerIcon', <Icon type="info-circle" key="info-circle" onClick={this.add}/>)
+        window.sendMessage('renderEditerIcon', <Icon type="schedule" key="schedule" onClick={this.add}>通栏组件</Icon>)
     }
 
 
@@ -50,7 +50,11 @@ class Page extends Component {
                 callback:callback
             });
             this.show();
-        })
+        });
+
+        window.onMessage('hideEditer',()=>{
+            this.hide();
+        });
     }
 
     show=()=>{
@@ -59,9 +63,9 @@ class Page extends Component {
         })
     }
 
-    toggle = () => {
+    hide = () => {
         this.setState({
-            visible: !this.state.visible
+            visible: false
         })
     }
 

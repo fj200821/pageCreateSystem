@@ -22,7 +22,6 @@
         window.Gdata = {};
         window.Build = {
             render:function(){
-                console.log(Gdata);
                 var html='';
                 Gdata.components.forEach(function(component,order){
                     var newHtml=ejs.render(component.tpl,{items:component.items});
@@ -30,9 +29,17 @@
                 });
                 document.querySelector('.wrapper').innerHTML = html;
             },
+
+            renderInfo:function(){
+                var info = Gdata.info;
+                document.title = info.title.value;
+                info.bgColor.value && (document.body.style['background-color'] = info.bgColor.value);
+                info.bgImg.value && (document.querySelector('.wrapper').style['background-image'] = 'url('+info.bgImg.value+')');
+            },
             update:function(data){
                 Gdata = data;
                 this.render();
+                this.renderInfo();
             }
         };
     </script>

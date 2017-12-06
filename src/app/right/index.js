@@ -5,6 +5,9 @@ import TwoTabEditer from '../../editer/two-tab-editer/index.js';
 
 
 class Page extends Component{
+    constructor(props){
+        super(props);
+    }
     render(){
         return <div>
             <PicEditer/>

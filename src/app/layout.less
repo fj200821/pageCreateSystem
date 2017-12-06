@@ -18,13 +18,25 @@
         .icons{
             display: flex;
             .icon{
-                font-size: 35px;
                 height: 60px;
                 width: 60px;
                 text-align: center;
                 padding: 5px;
                 background-color: #ffc501;
-                border-radius: 50%;
+                border-radius: 5px;
+                margin: 10px;
+                opacity: 0.9;
+            }
+
+            .icon:hover{
+                opacity: 1;
+                cursor: pointer;
+                box-shadow: 0 0 5px 0 #ffc501;
+            }
+
+            i:before{
+                font-size: 35px;
+                margin-bottom: 2px;
             }
         }
     }

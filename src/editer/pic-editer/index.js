@@ -28,7 +28,7 @@ class Page extends Component {
 
 
     componentDidMount() {
-        window.sendMessage('renderEditerIcon', <Icon type="picture" key="picEditerIcon" onClick={this.add}/>)
+        window.sendMessage('renderEditerIcon', <Icon type="picture" key="picEditerIcon" onClick={this.add}>标题组件</Icon>)
     }
 
 
@@ -43,6 +43,10 @@ class Page extends Component {
                 callback:callback
             });
             this.show();
+        });
+
+        window.onMessage('hideEditer',()=>{
+            this.hide();
         })
     }
 
@@ -52,9 +56,9 @@ class Page extends Component {
         })
     }
 
-    toggle = () => {
+    hide = () => {
         this.setState({
-            visible: !this.state.visible
+            visible: false
         })
     }
 
