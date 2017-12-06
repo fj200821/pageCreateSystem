@@ -26,6 +26,24 @@ window.Gdata = {
         "type": "pic-editer",
         "items": [{"picUrl": "//static.adbaitai.com/Website/Img/logo.png"}],
         "tpl": "<img src=\"<%=items[0].picUrl%>\"/>"
+    },{
+        name: '两栏',
+        type: "two-tab-editer",
+        tpl:'<style> .block{ display:inline-block;width:50%;overflow:hidden;float:left;text-align: center; } </style> <div> <a class="block" href="javascript:;"> <img style="width: 90%" src="<%=items[0].imgUrl%>"/> </a> <a class="block" href="javascript:;"> <img style="width: 90%" src="<%=items[1].imgUrl%>"/> </a> </div>',
+        items: [
+            {
+                type:"3",
+                data:'3',
+                noCharging:false,
+                imgUrl:'http://static.adbaitai.com/Website/Img/logo.png'
+            },
+            {
+                type:"1",
+                data:'2',
+                noCharging:true,
+                imgUrl:'http://static.adbaitai.com/Website/Img/logo.png'
+            }
+        ]
     }]
 };
 

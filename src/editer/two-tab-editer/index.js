@@ -20,6 +20,7 @@ class TwoTabPage extends Component {
             callback: function () {
 
             },
+            items:[],
             defaultData: {
                 name: '两栏',
                 placeholder: '两栏',
@@ -65,9 +66,9 @@ class TwoTabPage extends Component {
 
     onMessage() {
         window.onMessage("/editer/two-tab-editer/index.js:edit", (data, callback) => {
-            debugger
+            console.log(data);
             this.setState({
-                items: data.info,
+                items: data.items,
                 callback: callback
             });
             this.show();
@@ -84,16 +85,23 @@ class TwoTabPage extends Component {
 
     };
 
+    tabCallback = (index,values)=>{
+        let items = JSON.parse(JSON.stringify(this.state.items));
+        items[index] = values;
+        console.log(values);
+        this.state.callback(items);
+    }
+
     render() {
         let display = this.state.visible ? 'block' : 'none';
         return (
             <div style={{display: display}}>
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="第一栏" key="1">
-                        <Tab />
+                        <Tab item={this.state.items[0]} callback={(values)=>{this.tabCallback(0,values)}}/>
                     </TabPane>
                     <TabPane tab="第二栏" key="2">
-                        <Tab/>
+                        <Tab item={this.state.items[1]} callback={(values)=>{this.tabCallback(1,values)}}/>
                     </TabPane>
                 </Tabs>
             </div>
