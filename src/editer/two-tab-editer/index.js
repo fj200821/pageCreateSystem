@@ -2,8 +2,9 @@
  * Created by lianglili on 2017/12/04
  */
 import React, { Component } from 'react';
-import { Form, Icon, Button } from 'antd';
+import { Form, Icon, Tabs } from 'antd';
 import Util from '../../compoents/util/util';
+import Tab from './tab'
 
 let htmlTpl = require('./html.tpl');
 
@@ -65,7 +66,7 @@ class TwoTabPage extends Component {
         window.onMessage("/editer/two-tab-editer/index.js:edit", (data, callback) => {
             debugger
             this.setState({
-                info: data.info,
+                items: data.info,
                 callback: callback
             });
             this.show();
@@ -86,7 +87,14 @@ class TwoTabPage extends Component {
         let display = this.state.visible ? 'block' : 'none';
         return (
             <div style={{display: display}}>
-
+                <Tabs defaultActiveKey="1" onChange={}>
+                    <TabPane tab="第一栏" key="1">
+                        <Tab />
+                    </TabPane>
+                    <TabPane tab="第二栏" key="2">
+                        <Tab/>
+                    </TabPane>
+                </Tabs>
             </div>
         )
     }
