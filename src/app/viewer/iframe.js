@@ -31,13 +31,18 @@ class Iframe extends Component {
     _setIframe() {
         let iframe = document.createElement('iframe');
         iframe.className = 'viewer-iframe';
-        iframe.src = "/tpl/iframe.html";
         this.iframe = iframe;
+        iframe.src = "/tpl/iframe.html";
         this.iframe.onload = () => {
             this._initIframe();
-            setTimeout(() => {
-                this._bindEditer();
-            }, 1000);
+            let bind=()=>{
+                if(contentWindow.$){
+                    this._bindEditer();
+                }else{
+                    setTimeout(bind,50);
+                }
+            };
+            setTimeout(bind,50);
         };
         this._setIframe = function () {
         };

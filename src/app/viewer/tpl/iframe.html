@@ -32,9 +32,9 @@
 
             renderInfo:function(){
                 var info = Gdata.info;
-                document.title = info.title.value;
-                info.bgColor.value && (document.body.style['background-color'] = info.bgColor.value);
-                info.bgImg.value && (document.querySelector('.wrapper').style['background-image'] = 'url('+info.bgImg.value+')');
+                document.title = info.title;
+                info.bgColor && (document.body.style['background-color'] = info.bgColor);
+                info.bgImg && (document.querySelector('.wrapper').style['background-image'] = 'url('+info.bgImg+')');
             },
             update:function(data){
                 Gdata = data;

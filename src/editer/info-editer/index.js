@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Modal, Button, Input, Form} from 'antd';
 import {observer} from 'mobx-react';
-import Util from '../compoents/util/util';
-import Upload from '../compoents/upload'
+import Util from '../../compoents/util/util';
+import Upload from '../../compoents/upload'
 
 const FormItem = Form.Item;
 
@@ -22,7 +22,7 @@ class Page extends Component {
     }
 
     init() {
-        window.onMessage("/editer/info-editer.js:edit", (data,callback) => {
+        window.onMessage("/editer/info-editer/index.js:edit", (data,callback) => {
             this.setState({
                 data: data,
                 callback:callback
@@ -56,6 +56,7 @@ class Page extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const {visible,data} = this.state;
+        const info = Gdata.info;
         return (
             <div>
                 <Modal title="页面设置"
@@ -65,26 +66,28 @@ class Page extends Component {
                 >
                     <Form onSubmit={this.handleSubmit}>
                         <FormItem
-                            label={data.title.name}
+                            label="页面标题"
                             {...Util.formItemLayout}
                         >
                             {getFieldDecorator('title', {
+                                initialValue:info.title,
                                 rules: [{ required: true}],
                             })(
-                                <Input placeholder={data.title.placeholder}/>
+                                <Input placeholder="请输入页面标题"/>
                             )}
                         </FormItem>
                         <FormItem
-                            label={data.bgColor.name}
+                            label="背景色"
                             {...Util.formItemLayout}
                         >
                             {getFieldDecorator('bgColor', {
+                                initialValue:info.bgColor,
                             })(
-                                <Input placeholder={data.bgColor.placeholder}/>
+                                <Input placeholder="请输入页面背景色"/>
                             )}
                         </FormItem>
                         <FormItem
-                            label={data.bgImg.name}
+                            label="背景图片"
                             {...Util.formItemLayout}
                         >
                             <Upload callback={(res)=>{this.setState({bgImg:res.data.url})}}/>

@@ -30,12 +30,12 @@ class TwoTabPage extends Component {
                     {
                         type:0,
                         data:'',
-                        imgUrl:'http://static.adbaitai.com/Website/Img/logo.png'
+                        imgUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
                     },
                     {
                         type:0,
                         data:'',
-                        imgUrl:'http://static.adbaitai.com/Website/Img/logo.png'
+                        imgUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
                     }
                 ]
             }
@@ -58,6 +58,7 @@ class TwoTabPage extends Component {
 
     componentDidMount() {
         window.sendMessage('renderEditerIcon', <Icon type="appstore-o" key="appstore-o" onClick={this.add}>两栏组件</Icon>)
+        window.sendMessage('renderEditerIcon', <Icon type="appstore-o" key="appstore-os" onClick={this.add}>三栏组件</Icon>)
     }
 
     add = () => {

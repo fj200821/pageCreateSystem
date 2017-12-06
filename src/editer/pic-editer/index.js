@@ -18,7 +18,7 @@ class Page extends Component {
                 name:"图片组件",
                 type:"pic-editer",//标题组件
                 items:[{
-                    "picUrl":"//static.adbaitai.com/Website/Img/logo.png"
+                    "picUrl":"//oss.ltcdn.cc/cow/2017/12/06/255w_62h_A73231512552162_origin.png"
                 }],
                 tpl:tpl
             }
@@ -28,7 +28,7 @@ class Page extends Component {
 
 
     componentDidMount() {
-        window.sendMessage('renderEditerIcon', <Icon type="picture" key="picEditerIcon" onClick={this.add}>标题组件</Icon>)
+        window.sendMessage('renderEditerIcon', <Icon type="picture" key="picEditerIcon" onClick={this.add}>标题</Icon>)
     }
 
 

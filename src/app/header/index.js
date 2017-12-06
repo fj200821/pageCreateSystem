@@ -17,7 +17,7 @@ message.config({
 
 class Page extends Component {
     editInfo(){
-        window.sendMessage('/editer/info-editer.js:edit',Gdata.info,function(data){
+        window.sendMessage('/editer/info-editer/index.js:edit',Gdata.info,function(data){
             Gdata.info = JSON.parse(JSON.stringify(data));
             window.sendMessage('updateIframe');
             message.success('success');

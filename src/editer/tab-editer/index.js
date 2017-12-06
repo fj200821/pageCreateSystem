@@ -28,7 +28,7 @@ class Page extends Component {
                     type:0,
                     num:1,
                     pids:[1,2,3,4,5],
-                    imgUrl:'http://static.adbaitai.com/Website/Img/logo.png'
+                    imgUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
                 }]
             }
         };
@@ -37,7 +37,7 @@ class Page extends Component {
 
 
     componentDidMount() {
-        window.sendMessage('renderEditerIcon', <Icon type="schedule" key="schedule" onClick={this.add}>通栏组件</Icon>)
+        window.sendMessage('renderEditerIcon', <Icon type="schedule" key="schedule" onClick={this.add}>通栏</Icon>)
     }
 
 
