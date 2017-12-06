@@ -25,7 +25,7 @@
                 var html='';
                 Gdata.components.forEach(function(component,order){
                     var newHtml=ejs.render(component.tpl,{items:component.items});
-                    html += ('<div class="J_editer" data-component="'+encodeURIComponent(JSON.stringify(component))+'" data-order="'+order+'">'+newHtml+'</div>');
+                    html += ('<div class="J_editer" data-component="'+encodeURIComponent(JSON.stringify(component))+'" data-order="'+order+'" style="margin-top: '+component.base.marginTop+'px;">'+newHtml+'</div>');
                 });
                 document.querySelector('.wrapper').innerHTML = html;
             },

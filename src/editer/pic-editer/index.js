@@ -3,7 +3,6 @@ import { Form,Icon,Button} from 'antd';
 import Util from '../../compoents/util/util';
 import Upload from '../../compoents/upload';
 let tpl = require('./html.tpl');
-
 const FormItem = Form.Item;
 
 class Page extends Component {
