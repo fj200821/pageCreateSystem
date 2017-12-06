@@ -9,6 +9,7 @@ import Tab from './tab'
 let htmlTpl = require('./html.tpl');
 
 const FormItem = Form.Item;
+const TabPane = Tabs.TabPane;
 
 class TwoTabPage extends Component {
     constructor(props) {
@@ -55,7 +56,7 @@ class TwoTabPage extends Component {
     }
 
     componentDidMount() {
-        window.sendMessage('renderEditerIcon', <Icon type="picture" key="twoTabIcon" onClick={this.add}/>)
+        window.sendMessage('renderEditerIcon', <Icon type="appstore-o" key="appstore-o" onClick={this.add}>两栏组件</Icon>)
     }
 
     add = () => {
@@ -87,7 +88,7 @@ class TwoTabPage extends Component {
         let display = this.state.visible ? 'block' : 'none';
         return (
             <div style={{display: display}}>
-                <Tabs defaultActiveKey="1" onChange={}>
+                <Tabs defaultActiveKey="1">
                     <TabPane tab="第一栏" key="1">
                         <Tab />
                     </TabPane>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Form, Button, Input, InputNumber, RadioGroup} from 'antd';
+import { Form, Button, Input, InputNumber, Radio} from 'antd';
 import Util from '../../compoents/util/util';
 
 const FormItem = Form.Item;
+const RadioGroup = Radio.Group;
 
 class Tab extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class Tab extends Component {
         const { getFieldDecorator } = this.props.form;
         return (
             <div>
-                <Form onSubmit={this.handleSubmit(e)}>
+                <Form onSubmit={this.handleSubmit}>
                     <FormItem>
                         <RadioGroup onChange={this.onChange} value={this.state.value}>
                             <Radio value={1}><Input style={{ width: 100, marginLeft: 10 }} /></Radio>

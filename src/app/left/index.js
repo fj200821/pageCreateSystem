@@ -26,7 +26,7 @@ class Page extends Component{
     render(){
         return <div className="icons">
             {this.state.icons.map((icon,key)=>{
-                return <div className="icon">{icon}</div>;
+                return <div className="icon" key={key}>{icon}</div>;
             })}
         </div>
     }

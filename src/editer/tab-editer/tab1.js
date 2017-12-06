@@ -7,7 +7,17 @@ const FormItem = Form.Item;
 class Tab1 extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            defaultData:{}
+        }
     }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            defaultData:nextProps.defaultData || {}
+        })
+    }
+
     handleSubmit(){
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (err) {
@@ -25,6 +35,7 @@ class Tab1 extends Component{
                 {...Util.formItemLayout}
             >
                 {getFieldDecorator('pids', {
+                    initialValue:this.state.defaultData.pids,
                     rules: [{ required: true}]
                 })(
                     <Input placeholder="请输入广告计划id，以英文,隔开"/>
@@ -35,6 +46,7 @@ class Tab1 extends Component{
                 {...Util.formItemLayout}
             >
                 {getFieldDecorator('num', {
+                    initialValue:this.state.defaultData.num,
                     rules: [{ required: true}]
                 })(
                     <InputNumber min={1} max={3}/>

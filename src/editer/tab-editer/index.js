@@ -14,10 +14,12 @@ class Page extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            activeKey:"1",
             visible: false,
             imgUrl:'',
             callback: function () {
             },
+            items:[],
             defaultData: {
                 name:"通栏",
                 type:"tab-editer",//标题组件
@@ -45,9 +47,17 @@ class Page extends Component {
 
     onMessage() {
         window.onMessage("/editer/tab-editer/index.js:edit", (data, callback) => {
+            let type = data.items[0].type;
+            if(!type && type!==0){
+                type===this.state.activeKey;
+            }else{
+                type = type+1;
+            }
+
             this.setState({
                 items:data.items,
-                callback:callback
+                callback:callback,
+                activeKey:type.toString()
             });
             this.show();
         });
@@ -101,13 +111,13 @@ class Page extends Component {
     }
 
     render() {
-        const {visible, data} = this.state;
+        const {visible} = this.state;
         let display = visible?'block':'none';
         return (
             <div style={{display:display}}>
-                <Tabs defaultActiveKey="1" onChange={()=>{}}>
+                <Tabs defaultActiveKey={this.state.activeKey.toString()} activeKey={this.state.activeKey.toString()} onChange={(activeKey)=>{this.setState({activeKey:activeKey})}}>
                     <TabPane tab="指定广告" key="1">
-                        <Tab1 callback={this.tab1Callback}/>
+                        <Tab1 callback={this.tab1Callback} defaultData={this.state.items[0]}/>
                     </TabPane>
                     <TabPane tab="链接" key="2">
                         <Tab2 callback={this.tab2Callback}/>
