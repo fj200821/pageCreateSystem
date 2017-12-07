@@ -72,7 +72,7 @@ class upload extends Component{
             <div style={{display:"flex"}}>
                 <Upload {...props}>
                     <Button>
-                        <Icon type="upload" /> Click to Upload
+                        <Icon type="upload" /> 修改图片
                     </Button>
                 </Upload>
                 <Button
@@ -80,8 +80,8 @@ class upload extends Component{
                     onClick={this.handleUpload}
                     disabled={this.state.fileList.length === 0}
                     loading={uploading}
-                    style={{"marginLeft":"10px","marginTop":"3px"}}
-                >{uploading ? 'Uploading' : 'Start Upload' }
+                    style={{"marginLeft":"10px"}}
+                >{uploading ? 'Uploading' : '上传' }
                 </Button>
             </div>
         )

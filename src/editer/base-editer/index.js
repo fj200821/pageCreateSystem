@@ -10,9 +10,9 @@ class BaseEditer extends Component {
         super(props)
         this.state = {
             visible: false,
+            order:0,
             base: {
-                "marginTop": "0",
-                "order": 0
+                "marginTop": "0"
             }
         };
         this.onMessage();
@@ -26,7 +26,7 @@ class BaseEditer extends Component {
                 visible: true,
                 base: data.base,
                 callback: callback
-            })
+            });
         });
 
         window.onMessage('hideEditer',()=>{
@@ -40,14 +40,13 @@ class BaseEditer extends Component {
         })
     }
 
-    change = (e) => {
-        this.props.form.validateFieldsAndScroll((err, values) => {
-            if (err) {
-                console.log('Received values of form: ', values);
-                return;
-            }
-            this.state.callback(values);
-        });
+    change = (value) => {
+        let base = JSON.parse(JSON.stringify(this.state.base));
+        base.marginTop = value;
+        this.setState({
+            base:base
+        })
+        this.state.callback(base);
     }
 
     moveTop = () => {
@@ -93,20 +92,16 @@ class BaseEditer extends Component {
     }
 
     render() {
-        const {getFieldDecorator} = this.props.form;
         const {visible, data} = this.state;
         let display = visible ? 'block' : 'none';
+        console.log(this.state.base.marginTop);
         return <div style={{display: display, marginTop: -15}}>
             <Divider>基础设置</Divider>
-            <Form onSubmit={this.submit}>
+            <Form>
                 <FormItem
                     label="上边距"
                     {...Util.formItemLayout}>
-                    {getFieldDecorator('marginTop', {
-                        initialValue: this.state.base.marginTop,
-                    })(
-                        <InputNumber onChange={this.change}/>
-                    )}
+                        <InputNumber value={this.state.base.marginTop} onChange={this.change}/>
                 </FormItem>
                 <FormItem
                     label="操作"
@@ -123,4 +118,4 @@ class BaseEditer extends Component {
     }
 }
 
-export default Form.create()(BaseEditer);
+export default BaseEditer;

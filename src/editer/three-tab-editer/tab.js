@@ -68,7 +68,9 @@ class Tab extends Component {
         console.log(this.state.item.type);
         return (
             <div>
-                <Upload callback={this.updateCallback}/>
+                <div style={{"marginBottom":"20px"}}>
+                    <Upload callback={this.updateCallback}/>
+                </div>
                 <Form onSubmit={this.handleSubmit}>
                     <FormItem
                         label="跳转类型"

@@ -82,7 +82,7 @@ class Page extends Component {
         let display = visible?'block':'none';
         return (
             <div style={{display:display}}>
-                <Upload callback={this.uploadBack}/>
+                <Upload callback={this.uploadBack} style={{"marginBottom":"20px"}}/>
             </div>
         );
     }
