@@ -86,7 +86,7 @@ class Page extends Component {
             planIds:value.planIds.split(','),
             type:0,
             num:value.num,
-            picUrl:'http://static.adbaitai.com/Website/Img/logo.png'
+            picUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
         });
         this.state.callback(items);
     }

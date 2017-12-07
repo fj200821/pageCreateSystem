@@ -20,6 +20,7 @@ class BaseEditer extends Component {
 
     onMessage() {
         window.onMessage('/editer/base-editer/index.js:edit', (data, callback) => {
+            console.log(data);
             this.setState({
                 order: data.order,
                 visible: true,
