@@ -8,6 +8,9 @@ const FormItem = Form.Item;
 class Tab2 extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            item:props.item || {}
+        }
     }
     handleSubmit(){
         this.props.form.validateFieldsAndScroll((err, values) => {
@@ -16,17 +19,19 @@ class Tab2 extends Component{
                 return;
             }
 
-            if(!this.state.picUrl){
+            if(!this.state.item.picUrl){
                 message.error('请上传图片');
                 return;
             }
 
-            this.props.callback({picUrl:this.state.picUrl,skipUrl:values.skipUrl});
+            this.props.callback({picUrl:this.state.item.picUrl,skipUrl:values.skipUrl});
         });
     }
     uploadBack=(res)=>{
+        let item = Object.assign({},this.state.item);
+        item.picUrl = res.data.url;
         this.setState({
-            picUrl:res.data.url
+            item:item
         })
     }
     render(){
@@ -43,6 +48,7 @@ class Tab2 extends Component{
                 {...Util.formItemLayout}
             >
                 {getFieldDecorator('skipUrl', {
+                    initialValue:this.state.item.skipUrl,
                     rules: [{ required: true}]
                 })(
                     <Input placeholder="请输入链接地址"/>
@@ -57,4 +63,27 @@ class Tab2 extends Component{
     }
 }
 
-export default Form.create()(Tab2);
+class Middle extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            item:props.item || {}
+        }
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            item:nextProps.item || {}
+        })
+    }
+
+    render(){
+        let Aaa = Form.create()(Tab2);
+        return <div>
+            <Aaa item={this.state.item} callback={this.props.callback}/>
+        </div>
+    }
+}
+
+export default Middle;
+

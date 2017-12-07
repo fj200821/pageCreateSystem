@@ -89,6 +89,9 @@ class Page extends Component {
             picUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
         });
         this.state.callback(items);
+        this.setState({
+            items:items
+        })
     }
 
     tab2Callback=(value)=>{
@@ -118,13 +121,13 @@ class Page extends Component {
             <div style={{display:display}}>
                 <Tabs defaultActiveKey={this.state.activeKey.toString()} activeKey={this.state.activeKey.toString()} onChange={(activeKey)=>{this.setState({activeKey:activeKey})}}>
                     <TabPane tab="指定广告" key="1">
-                        <Tab1 callback={this.tab1Callback} defaultData={this.state.items[0]}/>
+                        <Tab1 callback={this.tab1Callback} item={this.state.items[0]}/>
                     </TabPane>
                     <TabPane tab="链接" key="2">
-                        <Tab2 callback={this.tab2Callback}/>
+                        <Tab2 callback={this.tab2Callback} item={this.state.items[0]}/>
                     </TabPane>
                     <TabPane tab="游戏互动" key="3">
-                        <Tab3 callback={this.tab3Callback}/>
+                        <Tab3 callback={this.tab3Callback} item={this.state.items[0]}/>
                     </TabPane>
                 </Tabs>
             </div>

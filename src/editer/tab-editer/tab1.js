@@ -8,13 +8,13 @@ class Tab1 extends Component{
     constructor(props){
         super(props);
         this.state = {
-            defaultData:{}
+            item:props.item || {}
         }
     }
 
     componentWillReceiveProps(nextProps){
         this.setState({
-            defaultData:nextProps.defaultData || {}
+            item:nextProps.item || {}
         })
     }
 
@@ -35,7 +35,7 @@ class Tab1 extends Component{
                 {...Util.formItemLayout}
             >
                 {getFieldDecorator('planIds', {
-                    initialValue:this.state.defaultData.planIds?this.state.defaultData.planIds.join(','):'',
+                    initialValue:this.state.item.planIds?this.state.item.planIds.join(','):'',
                     rules: [{ required: true}]
                 })(
                     <Input placeholder="请输入广告计划id，以英文,隔开"/>
@@ -46,7 +46,7 @@ class Tab1 extends Component{
                 {...Util.formItemLayout}
             >
                 {getFieldDecorator('num', {
-                    initialValue:this.state.defaultData.num,
+                    initialValue:this.state.item.num,
                     rules: [{ required: true}]
                 })(
                     <InputNumber min={1} max={3}/>
@@ -61,4 +61,26 @@ class Tab1 extends Component{
     }
 }
 
-export default Form.create()(Tab1);
+class Middle extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            item:props.item || {}
+        }
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            item:nextProps.item || {}
+        })
+    }
+
+    render(){
+        let Aaa = Form.create()(Tab1);
+        return <div>
+            <Aaa item={this.state.item} callback={this.props.callback}/>
+        </div>
+    }
+}
+
+export default Middle;
