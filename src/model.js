@@ -15,7 +15,7 @@ export function update(callback) {
 }
 
 
-export function getByPageId(pageId) {
+export function getByPageId(pageId,callback) {
     let data = JSON.parse(JSON.stringify(Gdata));
     data.name = Gdata.globalConfig.title;
 
