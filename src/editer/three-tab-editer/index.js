@@ -29,18 +29,18 @@ class TwoTabPage extends Component {
                 tpl:htmlTpl,
                 items: [
                     {
-                        type:0,
-                        data:'',
+                        type:6,
+                        noCharging:false,
                         picUrl:'//oss.ltcdn.cc/cow/2017/12/07/231w_221h_1322A1512613862_origin.png'
                     },
                     {
-                        type:0,
-                        data:'',
+                        type:6,
+                        noCharging:false,
                         picUrl:'//oss.ltcdn.cc/cow/2017/12/07/231w_221h_1322A1512613862_origin.png'
                     },
                     {
-                        type:0,
-                        data:'',
+                        type:6,
+                        noCharging:false,
                         picUrl:'//oss.ltcdn.cc/cow/2017/12/07/231w_221h_1322A1512613862_origin.png'
                     }
                 ]
@@ -63,7 +63,7 @@ class TwoTabPage extends Component {
     }
 
     componentDidMount() {
-        window.sendMessage('renderEditerIcon', <Icon type="appstore-o" key="appstore-o" onClick={this.add}>两栏组件</Icon>)
+        window.sendMessage('renderEditerIcon', <Icon type="appstore-o" key="appstore-o" onClick={this.add}>三栏组件</Icon>)
     }
 
     add = () => {
@@ -122,6 +122,11 @@ class TwoTabPage extends Component {
                         <TabPane tab="第二栏" key="2">
                             <Tab item={this.state.items[1]} callback={(values) => {
                                 this.tabCallback(1, values)
+                            }}/>
+                        </TabPane>
+                        <TabPane tab="第三栏" key="3">
+                            <Tab item={this.state.items[1]} callback={(values) => {
+                                this.tabCallback(2, values)
                             }}/>
                         </TabPane>
                     </Tabs>

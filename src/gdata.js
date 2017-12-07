@@ -57,7 +57,7 @@ window.Gdata = {
     }]
 };
 
-// Gdata.components = [];
+Gdata.components = [];
 
 Gdata.add = function (data) {
     this.components.push(data);

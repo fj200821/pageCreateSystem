@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Form, Button, Input, InputNumber, Radio,Checkbox,Select} from 'antd';
 import Util from '../../compoents/util/util';
 import Upload from '../../compoents/upload';
-
-
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const Option = Select.Option;
@@ -13,12 +11,11 @@ class Tab extends Component {
         super(props);
         this.state = {
             item:{
-                type:"1",
-                data:'',
+                type:6,
                 noCharging:false,
-                picUrl:'http://static.adbaitai.com/Website/Img/logo.png'
+                picUrl:'//oss.ltcdn.cc/cow/2017/12/07/231w_221h_1322A1512613862_origin.png'
             }
-        }
+        };
         if(props.item){
             this.state.item = props.item;
         }
@@ -27,7 +24,8 @@ class Tab extends Component {
     componentWillReceiveProps(nextProps){
         this.setState({
             item:nextProps.item || {}
-        })
+        });
+        console.log(nextProps.item.type)
     }
 
     handleSubmit=(e)=>{
@@ -40,19 +38,12 @@ class Tab extends Component {
             values.picUrl = this.state.item.picUrl;
             this.props.callback(values);
         })
-    }
-
-    onChange = (e) => {
-        console.log('radio checked', e.target.value);
-        this.setState({
-            value: e.target.value,
-        });
-    }
+    };
 
     updateCallback=(res)=>{
         let item = this.state.item;
         item.picUrl = res.data.url;
-    }
+    };
 
     changeNoCharging=(e)=>{
         let item = JSON.parse(JSON.stringify(this.state.item));
@@ -60,11 +51,25 @@ class Tab extends Component {
         this.setState({
             item:item
         })
-    }
+    };
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const types = [["1","指定计划"],["2","指定类目"],["3","游戏互动"],["4","链接"]];
+        const types = [{
+            id:6,
+            name:"指定计划"
+        },{
+            id:4,
+            name:"指定类目"
+        },{
+            id:3,
+            name:"游戏互动"
+        },{
+            id:5,
+            name:"链接"
+        }];
+
+
         return (
             <div>
                 <div style={{"marginBottom":"20px"}}>
@@ -76,11 +81,11 @@ class Tab extends Component {
                         {...Util.formItemLayout}
                     >
                         {getFieldDecorator('type', {
-                            initialValue:types[this.state.item.type][1]
+                            initialValue:this.state.item.type
                         })(
                             <Select>
                                 {types.map((type,key)=>{
-                                    return <Option value={type[0]} key={key}>{type[1]}</Option>;
+                                    return <Option value={type.id} key={key}>{type.name}</Option>;
                                 })}
                             </Select>
                         )}
