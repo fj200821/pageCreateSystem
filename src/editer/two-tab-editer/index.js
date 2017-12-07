@@ -29,13 +29,13 @@ class TwoTabPage extends Component {
                 tpl:htmlTpl,
                 items: [
                     {
-                        type:0,
-                        data:'',
+                        type:3,
+                        noCharging:false,
                         picUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
                     },
                     {
-                        type:0,
-                        data:'',
+                        type:3,
+                        noCharging:false,
                         picUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
                     }
                 ]
@@ -98,6 +98,9 @@ class TwoTabPage extends Component {
     tabCallback = (index,values)=>{
         let items = JSON.parse(JSON.stringify(this.state.items));
         items[index] = values;
+        this.setState({
+            items:items
+        });
         this.state.callback(items);
     }
 

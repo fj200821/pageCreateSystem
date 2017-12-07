@@ -23,23 +23,22 @@ class TwoTabPage extends Component {
             items:[],
             defaultData: {
                 base:{},
-                name: '两栏',
-                placeholder: '两栏',
+                name: '三栏',
                 type: "three-tab-editer",
                 tpl:htmlTpl,
                 items: [
                     {
-                        type:6,
+                        type:3,
                         noCharging:false,
                         picUrl:'//oss.ltcdn.cc/cow/2017/12/07/231w_221h_1322A1512613862_origin.png'
                     },
                     {
-                        type:6,
+                        type:3,
                         noCharging:false,
                         picUrl:'//oss.ltcdn.cc/cow/2017/12/07/231w_221h_1322A1512613862_origin.png'
                     },
                     {
-                        type:6,
+                        type:3,
                         noCharging:false,
                         picUrl:'//oss.ltcdn.cc/cow/2017/12/07/231w_221h_1322A1512613862_origin.png'
                     }
@@ -103,6 +102,9 @@ class TwoTabPage extends Component {
     tabCallback = (index,values)=>{
         let items = JSON.parse(JSON.stringify(this.state.items));
         items[index] = values;
+        this.setState({
+            items:items
+        });
         this.state.callback(items);
     }
 
@@ -125,7 +127,7 @@ class TwoTabPage extends Component {
                             }}/>
                         </TabPane>
                         <TabPane tab="第三栏" key="3">
-                            <Tab item={this.state.items[1]} callback={(values) => {
+                            <Tab item={this.state.items[2]} callback={(values) => {
                                 this.tabCallback(2, values)
                             }}/>
                         </TabPane>
