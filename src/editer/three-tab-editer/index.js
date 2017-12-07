@@ -72,7 +72,6 @@ class TwoTabPage extends Component {
 
     onMessage() {
         window.onMessage("/editer/three-tab-editer/index.js:edit", (data, callback) => {
-            console.log(data);
             this.setState({
                 items: data.items,
                 callback: callback
@@ -104,7 +103,6 @@ class TwoTabPage extends Component {
     tabCallback = (index,values)=>{
         let items = JSON.parse(JSON.stringify(this.state.items));
         items[index] = values;
-        console.log(values);
         this.state.callback(items);
     }
 

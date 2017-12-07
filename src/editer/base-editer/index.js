@@ -20,7 +20,6 @@ class BaseEditer extends Component {
 
     onMessage() {
         window.onMessage('/editer/base-editer/index.js:edit', (data, callback) => {
-            console.log(data);
             this.setState({
                 order: data.order,
                 visible: true,
@@ -85,7 +84,6 @@ class BaseEditer extends Component {
         let components = JSON.parse(JSON.stringify(Gdata.components));
         let order = this.state.order;
         components.splice(order, 1);
-        console.log(components);
         Gdata.components = components;
         window.sendMessage('updateIframe');
         window.sendMessage('hideEditer');
@@ -94,7 +92,6 @@ class BaseEditer extends Component {
     render() {
         const {visible, data} = this.state;
         let display = visible ? 'block' : 'none';
-        console.log(this.state.base.marginTop);
         return <div style={{display: display, marginTop: -15}}>
             <Divider>基础设置</Divider>
             <Form>

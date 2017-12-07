@@ -65,7 +65,6 @@ class Tab extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const types = [["1","指定计划"],["2","指定类目"],["3","游戏互动"],["4","链接"]];
-        console.log(this.state.item.type);
         return (
             <div>
                 <div style={{"marginBottom":"20px"}}>
