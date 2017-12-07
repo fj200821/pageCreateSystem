@@ -25,18 +25,23 @@ class TwoTabPage extends Component {
                 base:{},
                 name: '两栏',
                 placeholder: '两栏',
-                type: "two-tab-editer",
+                type: "three-tab-editer",
                 tpl:htmlTpl,
                 items: [
                     {
                         type:0,
                         data:'',
-                        imgUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
+                        imgUrl:'//oss.ltcdn.cc/cow/2017/12/07/231w_221h_1322A1512613862_origin.png'
                     },
                     {
                         type:0,
                         data:'',
-                        imgUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
+                        imgUrl:'//oss.ltcdn.cc/cow/2017/12/07/231w_221h_1322A1512613862_origin.png'
+                    },
+                    {
+                        type:0,
+                        data:'',
+                        imgUrl:'//oss.ltcdn.cc/cow/2017/12/07/231w_221h_1322A1512613862_origin.png'
                     }
                 ]
             }
@@ -66,7 +71,7 @@ class TwoTabPage extends Component {
     }
 
     onMessage() {
-        window.onMessage("/editer/two-tab-editer/index.js:edit", (data, callback) => {
+        window.onMessage("/editer/three-tab-editer/index.js:edit", (data, callback) => {
             console.log(data);
             this.setState({
                 items: data.items,
