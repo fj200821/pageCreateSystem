@@ -76,9 +76,9 @@ class Middle extends Component{
     }
 
     render(){
-        let Aaa = Form.create()(Tab1);
+        let Temp = Form.create()(Tab1);
         return <div>
-            <Aaa item={this.state.item} callback={this.props.callback}/>
+            <Temp item={this.state.item} callback={this.props.callback}/>
         </div>
     }
 }

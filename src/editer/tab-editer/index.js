@@ -109,7 +109,7 @@ class Page extends Component {
         items.push({
             type:2,
             picUrl:value.picUrl,
-            gameId:value.gameId
+            lotteryId:value.lotteryId
         });
         this.state.callback(items);
     }

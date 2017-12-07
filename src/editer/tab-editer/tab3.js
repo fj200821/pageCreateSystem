@@ -5,9 +5,12 @@ import Upload from '../../compoents/upload';
 
 const FormItem = Form.Item;
 
-class Tab2 extends Component{
+class Tab3 extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            item:props.item || {}
+        }
     }
     handleSubmit(){
         this.props.form.validateFieldsAndScroll((err, values) => {
@@ -16,17 +19,19 @@ class Tab2 extends Component{
                 return;
             }
 
-            if(!this.state.picUrl){
+            if(!this.state.item.picUrl){
                 message.error('请上传图片');
                 return;
             }
 
-            this.props.callback({picUrl:this.state.picUrl,gameId:values.gameId});
+            this.props.callback({picUrl:this.state.item.picUrl,lotteryId:values.lotteryId});
         });
     }
     uploadBack=(res)=>{
+        let item = Object.assign({},this.state.item);
+        item.picUrl = res.data.url;
         this.setState({
-            picUrl:res.data.url
+            item:item
         })
     }
     render(){
@@ -42,7 +47,8 @@ class Tab2 extends Component{
                 label="游戏id"
                 {...Util.formItemLayout}
             >
-                {getFieldDecorator('gameId', {
+                {getFieldDecorator('lotteryId', {
+                    initialValue:this.state.item.lotteryId,
                     rules: [{ required: true}]
                 })(
                     <Input placeholder="游戏id"/>
@@ -57,4 +63,25 @@ class Tab2 extends Component{
     }
 }
 
-export default Form.create()(Tab2);
+class Middle extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            item:props.item || {}
+        }
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            item:nextProps.item || {}
+        })
+    }
+
+    render(){
+        let Temp = Form.create()(Tab3);
+        return <div>
+            <Temp item={this.state.item} callback={this.props.callback}/>
+        </div>
+    }
+}
+export default Middle;
