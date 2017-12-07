@@ -22,7 +22,7 @@ class Page extends Component {
     }
 
     init() {
-        window.onMessage("/editer/info-editer/index.js:edit", (data,callback) => {
+        window.onMessage("/editer/globalConfig-editer/index.js:edit", (data,callback) => {
             this.setState({
                 data: data,
                 callback:callback
@@ -56,7 +56,7 @@ class Page extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const {visible,data} = this.state;
-        const info = Gdata.info;
+        const globalConfig = Gdata.globalConfig;
         return (
             <div>
                 <Modal title="页面设置"
@@ -70,7 +70,7 @@ class Page extends Component {
                             {...Util.formItemLayout}
                         >
                             {getFieldDecorator('title', {
-                                initialValue:info.title,
+                                initialValue:globalConfig.title,
                                 rules: [{ required: true}],
                             })(
                                 <Input placeholder="请输入页面标题"/>
@@ -81,7 +81,7 @@ class Page extends Component {
                             {...Util.formItemLayout}
                         >
                             {getFieldDecorator('bgColor', {
-                                initialValue:info.bgColor,
+                                initialValue:globalConfig.bgColor,
                             })(
                                 <Input placeholder="请输入页面背景色"/>
                             )}

@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 require('../gdata');
 require('../compoents/onmessage');
 
-import InfoEditer from '../editer/info-editer/index.js';
+import InfoEditer from '../editer/globalConfig-editer/index.js';
 
 import Header from './header/index';
 import Left from './left/index';

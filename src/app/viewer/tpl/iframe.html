@@ -30,16 +30,16 @@
                 document.querySelector('.wrapper').innerHTML = html;
             },
 
-            renderInfo:function(){
-                var info = Gdata.info;
-                document.title = info.title;
-                info.bgColor && (document.body.style['background-color'] = info.bgColor);
-                info.bgImg && (document.querySelector('.wrapper').style['background-image'] = 'url('+info.bgImg+')');
+            renderGlobalConfig:function(){
+                var globalConfig = Gdata.globalConfig;
+                document.title = globalConfig.title;
+                globalConfig.bgColor && (document.body.style['background-color'] = globalConfig.bgColor);
+                globalConfig.bgImg && (document.querySelector('.wrapper').style['background-image'] = 'url('+globalConfig.bgImg+')');
             },
             update:function(data){
                 Gdata = data;
                 this.render();
-                this.renderInfo();
+                this.renderGlobalConfig();
             }
         };
     </script>

@@ -1,5 +1,5 @@
 window.Gdata = {
-    info:{
+    globalConfig:{
         title:"test",
         bgColor:"#58baf9",
         bgImg:""

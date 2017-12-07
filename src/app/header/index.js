@@ -17,8 +17,8 @@ message.config({
 
 class Page extends Component {
     editInfo(){
-        window.sendMessage('/editer/info-editer/index.js:edit',Gdata.info,function(data){
-            Gdata.info = JSON.parse(JSON.stringify(data));
+        window.sendMessage('/editer/globalConfig-editer/index.js:edit',Gdata.globalConfig,function(data){
+            Gdata.globalConfig = JSON.parse(JSON.stringify(data));
             window.sendMessage('updateIframe');
             message.success('success');
         })
@@ -29,7 +29,7 @@ class Page extends Component {
     }
 
     publish=()=>{
-        if(!Gdata.info.title.value || !Gdata.components.length){
+        if(!Gdata.globalConfig.title.value || !Gdata.components.length){
             message.error('发布失败，必须有标题和最少一个组件实例');
         }else{
             message.success('发布成功');
