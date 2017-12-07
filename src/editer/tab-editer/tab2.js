@@ -16,17 +16,17 @@ class Tab2 extends Component{
                 return;
             }
 
-            if(!this.state.imgUrl){
+            if(!this.state.picUrl){
                 message.error('请上传图片');
                 return;
             }
 
-            this.props.callback({imgUrl:this.state.imgUrl,skipUrl:values.skipUrl});
+            this.props.callback({picUrl:this.state.picUrl,skipUrl:values.skipUrl});
         });
     }
     uploadBack=(res)=>{
         this.setState({
-            imgUrl:res.data.url
+            picUrl:res.data.url
         })
     }
     render(){

@@ -16,17 +16,17 @@ class Tab2 extends Component{
                 return;
             }
 
-            if(!this.state.imgUrl){
+            if(!this.state.picUrl){
                 message.error('请上传图片');
                 return;
             }
 
-            this.props.callback({imgUrl:this.state.imgUrl,gameId:values.gameId});
+            this.props.callback({picUrl:this.state.picUrl,gameId:values.gameId});
         });
     }
     uploadBack=(res)=>{
         this.setState({
-            imgUrl:res.data.url
+            picUrl:res.data.url
         })
     }
     render(){

@@ -34,8 +34,8 @@ class Tab1 extends Component{
                 label="广告计划"
                 {...Util.formItemLayout}
             >
-                {getFieldDecorator('pids', {
-                    initialValue:this.state.defaultData.pids,
+                {getFieldDecorator('planIds', {
+                    initialValue:this.state.defaultData.planIds?this.state.defaultData.planIds.join(','):'',
                     rules: [{ required: true}]
                 })(
                     <Input placeholder="请输入广告计划id，以英文,隔开"/>

@@ -4,20 +4,20 @@
     <items
     [0].num;i++){%>
     <div style="text-align: center;">
-        <a href="javascript:;"><img src="<%=items[0].imgUrl%>"/></a>
+        <a href="javascript:;"><img src="<%=items[0].picUrl%>"/></a>
     </div>
     <%}%>
     <%}%>
 
     <%if(items[0].type===1){%>
     <div style="text-align: center;">
-        <a href="javascript:;"><img src="<%=items[0].imgUrl%>"/></a>
+        <a href="javascript:;"><img src="<%=items[0].picUrl%>"/></a>
     </div>
     <%}%>
 
     <%if(items[0].type===2){%>
     <div style="text-align: center;">
-        <a href="javascript:;"><img src="<%=items[0].imgUrl%>"/></a>
+        <a href="javascript:;"><img src="<%=items[0].picUrl%>"/></a>
     </div>
     <%}%>
 </div>

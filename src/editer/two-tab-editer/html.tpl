@@ -16,9 +16,9 @@
 </style>
 <div class="two-tab-editer clearfix">
     <a class="block" href="javascript:;">
-        <img src="<%=items[0].imgUrl%>"/>
+        <img src="<%=items[0].picUrl%>"/>
     </a>
     <a class="block" href="javascript:;">
-        <img src="<%=items[1].imgUrl%>"/>
+        <img src="<%=items[1].picUrl%>"/>
     </a>
 </div>

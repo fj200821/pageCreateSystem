@@ -16,7 +16,7 @@ class TwoTabPage extends Component {
         super(props);
         this.state = {
             visible: false,
-            imgUrl: '',
+            picUrl: '',
             callback: function () {
 
             },
@@ -31,12 +31,12 @@ class TwoTabPage extends Component {
                     {
                         type:0,
                         data:'',
-                        imgUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
+                        picUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
                     },
                     {
                         type:0,
                         data:'',
-                        imgUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
+                        picUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
                     }
                 ]
             }
@@ -46,11 +46,11 @@ class TwoTabPage extends Component {
         let value = JSON.parse(JSON.stringify(this.state.defaultData));
 
         let data = [];
-        delete value.imgUrl;
+        delete value.picUrl;
         value.items.map((item,index) => {
             let param = {};
             param.info = encodeURIComponent(JSON.stringify(item));
-            param.imgUrl = item.imgUrl;
+            param.picUrl = item.picUrl;
             data.push(param);
         })
 

@@ -16,7 +16,7 @@ class Tab extends Component {
                 type:"1",
                 data:'',
                 noCharging:false,
-                imgUrl:'http://static.adbaitai.com/Website/Img/logo.png'
+                picUrl:'http://static.adbaitai.com/Website/Img/logo.png'
             }
         }
         if(props.item){
@@ -37,7 +37,7 @@ class Tab extends Component {
                 console.log('Received values of from:', values);
                 return;
             }
-            values.imgUrl = this.state.item.imgUrl;
+            values.picUrl = this.state.item.picUrl;
             this.props.callback(values);
         })
     }
@@ -51,7 +51,7 @@ class Tab extends Component {
 
     updateCallback=(res)=>{
         let item = this.state.item;
-        item.imgUrl = res.data.url;
+        item.picUrl = res.data.url;
     }
 
     changeNoCharging=(e)=>{

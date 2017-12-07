@@ -18,12 +18,12 @@
 </style>
 <div class="three-tab-editer clearfix">
     <a class="block" href="javascript:;">
-        <img src="<%=items[0].imgUrl%>"/>
+        <img src="<%=items[0].picUrl%>"/>
     </a>
     <a class="block" href="javascript:;">
-        <img src="<%=items[1].imgUrl%>"/>
+        <img src="<%=items[1].picUrl%>"/>
     </a>
     <a class="block" href="javascript:;">
-        <img src="<%=items[2].imgUrl%>"/>
+        <img src="<%=items[2].picUrl%>"/>
     </a>
 </div>

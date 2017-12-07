@@ -11,7 +11,7 @@ window.Gdata = {
         "name": "通栏",
         "type": "tab-editer",
         "tpl": "<%if(items[0].type===0){%>\n<%for(var i=0;i<items[0].num;i++){%>\n<a href=\"javascript:;\"><img src=\"<%=items[0].imgUrl%>\"/></a>\n<%}%>\n<%}%>\n\n<%if(items[0].type===1){%>\n<a href=\"javascript:;\"><img src=\"<%=items[0].imgUrl%>\"/></a>\n<%}%>\n\n<%if(items[0].type===2){%>\n<a href=\"javascript:;\"><img src=\"<%=items[0].imgUrl%>\"/></a>\n<%}%>\n",
-        "items": [{"pids": "1,2,3,4", "type": 0, "num": 2, "imgUrl": "http://static.adbaitai.com/Website/Img/logo.png"}]
+        "items": [{"planIds": "1,2,3,4", "type": 0, "num": 2, "imgUrl": "http://static.adbaitai.com/Website/Img/logo.png"}]
     }, {
         base:{
             marginTop:"0"

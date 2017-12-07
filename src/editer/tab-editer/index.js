@@ -16,7 +16,7 @@ class Page extends Component {
         this.state = {
             activeKey:"1",
             visible: false,
-            imgUrl:'',
+            picUrl:'',
             callback: function () {
             },
             items:[],
@@ -28,8 +28,8 @@ class Page extends Component {
                 items:[{
                     type:0,
                     num:1,
-                    pids:[1,2,3,4,5],
-                    imgUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
+                    planIds:[],
+                    picUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
                 }]
             }
         };
@@ -83,10 +83,10 @@ class Page extends Component {
     tab1Callback=(value)=>{
         let items = [];
         items.push({
-            pids:value.pids,
+            planIds:value.planIds.split(','),
             type:0,
             num:value.num,
-            imgUrl:'http://static.adbaitai.com/Website/Img/logo.png'
+            picUrl:'http://static.adbaitai.com/Website/Img/logo.png'
         });
         this.state.callback(items);
     }
@@ -95,7 +95,7 @@ class Page extends Component {
         let items = [];
         items.push({
             type:1,
-            imgUrl:value.imgUrl,
+            picUrl:value.picUrl,
             skipUrl:value.skipUrl
         });
         this.state.callback(items);
@@ -105,7 +105,7 @@ class Page extends Component {
         let items = [];
         items.push({
             type:2,
-            imgUrl:value.imgUrl,
+            picUrl:value.picUrl,
             gameId:value.gameId
         });
         this.state.callback(items);
