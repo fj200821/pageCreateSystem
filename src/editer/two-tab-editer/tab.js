@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Form, Button, Input, InputNumber, Radio, Checkbox, Select, message} from 'antd';
 import Util from '../../compoents/util/util';
 import Upload from '../../compoents/upload';
-
+import Industrys from '../../compoents/industrys/index';
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const Option = Select.Option;
@@ -33,7 +33,8 @@ class Tab extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            item: props.item
+            item: props.item,
+            selectedIndustrys:props.item.industryId || []
         };
         this.change(props.item.type);
     }
@@ -46,6 +47,13 @@ class Tab extends Component {
                 return;
             }
             values.picUrl = this.state.item.picUrl;
+            if(values.type==='4'){
+                if(!this.state.selectedIndustrys.length){
+                    message.error('请选择类目');
+                    return;
+                }
+                values.industryId = this.state.selectedIndustrys;
+            }
             this.props.callback(values);
         });
     };
@@ -57,6 +65,16 @@ class Tab extends Component {
 
 
     change = (value) => {
+
+        if(value==="4"){
+            this.renderType=()=>{
+                let type = actions[value].type;
+                console.log(this.state.selectedIndustrys);
+                return <FormItem {...Util.tailFormItemLayout}><Industrys selectedIndustrys={this.state.selectedIndustrys} callback={(values)=>{this.setState({selectedIndustrys:values})}}>选择类目</Industrys></FormItem>
+            };
+            return;
+        }
+
         this.renderType = () => {
             const {getFieldDecorator} = this.props.form;
             let type = actions[value].type;
@@ -86,7 +104,7 @@ class Tab extends Component {
                         {...Util.formItemLayout}
                     >
                         {getFieldDecorator('type', {
-                            initialValue: actions[this.state.item.type].name,
+                            initialValue:this.state.item.type.toString(),
                             rules: [{required: true}],
                             onChange: (value) => {
                                 this.change(value);
