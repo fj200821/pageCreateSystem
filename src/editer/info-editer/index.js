@@ -45,9 +45,9 @@ class Page extends Component {
                 return;
             }
             let data = JSON.parse(JSON.stringify(this.state.data));
-            data.title.value = values.title;
-            data.bgColor.value = values.bgColor;
-            data.bgImg.value = this.state.bgImg;
+            data.title = values.title;
+            data.bgColor = values.bgColor;
+            data.bgImg = this.state.bgImg;
             this.state.callback(data);
             this.toggle();
         });

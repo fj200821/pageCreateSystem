@@ -14,6 +14,7 @@ class Page extends Component {
             callback: function () {
             },
             defaultData: {
+                base:{},
                 name:"图片组件",
                 type:"pic-editer",//标题组件
                 items:[{

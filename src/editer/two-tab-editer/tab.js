@@ -75,7 +75,7 @@ class Tab extends Component {
                         {...Util.formItemLayout}
                     >
                         {getFieldDecorator('type', {
-                            initialValue:types[(this.state.item.type || 0)-1][1]
+                            initialValue:types[this.state.item.type][1]
                         })(
                             <Select>
                                 {types.map((type,key)=>{

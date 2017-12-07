@@ -21,6 +21,7 @@ class Page extends Component {
             },
             items:[],
             defaultData: {
+                base:{},
                 name:"通栏",
                 type:"tab-editer",//标题组件
                 tpl:tpl,

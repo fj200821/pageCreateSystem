@@ -22,6 +22,7 @@ class TwoTabPage extends Component {
             },
             items:[],
             defaultData: {
+                base:{},
                 name: '两栏',
                 placeholder: '两栏',
                 type: "two-tab-editer",
@@ -73,12 +74,22 @@ class TwoTabPage extends Component {
                 callback: callback
             });
             this.show();
+        });
+
+        window.onMessage('hideEditer',()=>{
+                this.hide();
         })
     }
 
     show = () => {
         this.setState({
             visible: true
+        })
+    }
+
+    hide = () => {
+        this.setState({
+            visible: false
         })
     }
 
@@ -95,18 +106,26 @@ class TwoTabPage extends Component {
 
     render() {
         let display = this.state.visible ? 'block' : 'none';
-        return (
-            <div style={{display: display}}>
-                <Tabs defaultActiveKey="1">
-                    <TabPane tab="第一栏" key="1">
-                        <Tab item={this.state.items[0]} callback={(values)=>{this.tabCallback(0,values)}}/>
-                    </TabPane>
-                    <TabPane tab="第二栏" key="2">
-                        <Tab item={this.state.items[1]} callback={(values)=>{this.tabCallback(1,values)}}/>
-                    </TabPane>
-                </Tabs>
-            </div>
-        )
+        if(!this.state.items.length){
+            return <div></div>
+        }else {
+            return (
+                <div style={{display: display}}>
+                    <Tabs defaultActiveKey="1">
+                        <TabPane tab="第一栏" key="1">
+                            <Tab item={this.state.items[0]} callback={(values) => {
+                                this.tabCallback(0, values)
+                            }}/>
+                        </TabPane>
+                        <TabPane tab="第二栏" key="2">
+                            <Tab item={this.state.items[1]} callback={(values) => {
+                                this.tabCallback(1, values)
+                            }}/>
+                        </TabPane>
+                    </Tabs>
+                </div>
+            )
+        }
     }
 }
 

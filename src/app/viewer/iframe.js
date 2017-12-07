@@ -21,15 +21,17 @@ class Iframe extends Component {
             window.sendMessage('hideEditer');
             let component = JSON.parse(decodeURIComponent($(this).data('component')));
             let order = Number($(this).data('order'));
-            window.sendMessage('/editer/' + component.type + '/index.js:edit', {items: component.items, order: order}, (items) => {
-                Gdata.components[order].items = items;
-                self._updateIframe();
-            });
-            window.sendMessage('/editer/base-editer/index.js:edit', {base: component.base, order: order}, (base,neworder) => {
-                base && (Gdata.components[order].base = base);
-                neworder && (order=neworder);
-                self._updateIframe();
-            });
+            setTimeout(()=>{
+                window.sendMessage('/editer/' + component.type + '/index.js:edit', {items: component.items, order: order}, (items) => {
+                    Gdata.components[order].items = items;
+                    self._updateIframe();
+                });
+                window.sendMessage('/editer/base-editer/index.js:edit', {base: component.base, order: order}, (base,neworder) => {
+                    base && (Gdata.components[order].base = base);
+                    neworder && (order=neworder);
+                    self._updateIframe();
+                });
+            },10);
         })
     }
 

@@ -26,6 +26,16 @@ class BaseEditer extends Component {
                 base: data.base,
                 callback: callback
             })
+        });
+
+        window.onMessage('hideEditer',()=>{
+            this.hide();
+        });
+    }
+
+    hide(){
+        this.setState({
+            visible:false
         })
     }
 
@@ -71,6 +81,16 @@ class BaseEditer extends Component {
         })
     }
 
+    del=()=>{
+        let components = JSON.parse(JSON.stringify(Gdata.components));
+        let order = this.state.order;
+        components.splice(order, 1);
+        console.log(components);
+        Gdata.components = components;
+        window.sendMessage('updateIframe');
+        window.sendMessage('hideEditer');
+    }
+
     render() {
         const {getFieldDecorator} = this.props.form;
         const {visible, data} = this.state;
@@ -88,11 +108,12 @@ class BaseEditer extends Component {
                     )}
                 </FormItem>
                 <FormItem
-                    label="位置"
+                    label="操作"
                     {...Util.formItemLayout}>
                     <div>
                         <a href="javascript:;"><Icon type="up" onClick={this.moveTop}/></a>
                         <a href="javascript:;"><Icon type="down" onClick={this.moveBown} style={{"marginLeft": "10px"}}/></a>
+                        <a href="javascript:;"><Icon type="delete" onClick={this.del} style={{"marginLeft": "10px"}}/></a>
                     </div>
                 </FormItem>
             </Form>

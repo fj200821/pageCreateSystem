@@ -44,6 +44,8 @@ window.Gdata = {
     }]
 };
 
+Gdata.components=[];
+
 Gdata.add = function(data){
     this.components.push(data);
     window.sendMessage('updateIframe');
