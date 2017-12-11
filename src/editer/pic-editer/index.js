@@ -16,8 +16,10 @@ class Page extends Component {
             defaultData: {
                 base:{},
                 name:"图片组件",
-                type:"pic-editer",//标题组件
+                type:6,
+                editer:"pic-editer",//标题组件
                 items:[{
+                    type:8,
                     "picUrl":"//oss.ltcdn.cc/cow/2017/12/06/255w_62h_A73231512552162_origin.png"
                 }],
                 tpl:tpl

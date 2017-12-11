@@ -23,11 +23,13 @@ class Page extends Component {
             defaultData: {
                 base:{},
                 name:"通栏",
-                type:"tab-editer",//标题组件
+                type:1,
+                editer:"tab-editer",//标题组件
                 tpl:tpl,
                 items:[{
-                    type:0,
+                    type:6,
                     num:1,
+                    async:true,
                     planIds:[],
                     picUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
                 }]
@@ -48,17 +50,10 @@ class Page extends Component {
 
     onMessage() {
         window.onMessage("/editer/tab-editer/index.js:edit", (data, callback) => {
-            let type = data.items[0].type;
-            if(!type && type!==0){
-                type===this.state.activeKey;
-            }else{
-                type = type+1;
-            }
-
             this.setState({
                 items:data.items,
                 callback:callback,
-                activeKey:type.toString()
+                activeKey:(data.order+1).toString()
             });
             this.show();
         });
@@ -97,7 +92,7 @@ class Page extends Component {
     tab2Callback=(value)=>{
         let items = [];
         items.push({
-            type:1,
+            type:5,
             picUrl:value.picUrl,
             skipUrl:value.skipUrl
         });
@@ -107,7 +102,7 @@ class Page extends Component {
     tab3Callback=(value)=>{
         let items = [];
         items.push({
-            type:2,
+            type:3,
             picUrl:value.picUrl,
             lotteryId:value.lotteryId
         });

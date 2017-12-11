@@ -22,7 +22,7 @@ class Iframe extends Component {
             let component = JSON.parse(decodeURIComponent($(this).data('component')));
             let order = Number($(this).data('order'));
             setTimeout(()=>{
-                window.sendMessage('/editer/' + component.type + '/index.js:edit', {items: component.items, order: order}, (items) => {
+                window.sendMessage('/editer/' + component.editer + '/index.js:edit', {items: component.items, order: order}, (items) => {
                     Gdata.components[order].items = items;
                     self._updateIframe();
                 });
@@ -39,7 +39,7 @@ class Iframe extends Component {
         let iframe = document.createElement('iframe');
         iframe.className = 'viewer-iframe';
         this.iframe = iframe;
-        iframe.src = "/tpl/iframe.html";
+        iframe.src = "/tpl/iframe.html?isEditer=true";
         this.iframe.onload = () => {
             this._initIframe();
             let bind=()=>{

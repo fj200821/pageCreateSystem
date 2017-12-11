@@ -24,7 +24,8 @@ class TwoTabPage extends Component {
             defaultData: {
                 base:{},
                 name: '三栏',
-                type: "three-tab-editer",
+                type:8,
+                editer: "three-tab-editer",
                 tpl:htmlTpl,
                 items: [
                     {

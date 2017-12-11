@@ -42,7 +42,7 @@ const webpackConfig = {
 };
 
 const config = {
-    proxyTarget:"http://crmpre.adbaitai.com" //设置proxy需要 ./src/config.js apiHost将强制设置为空 协议头不能为空
+    proxyTarget:"http://192.168.10.120" //设置proxy需要 ./src/config.js apiHost将强制设置为空 协议头不能为空
 };
 
 module.exports = {

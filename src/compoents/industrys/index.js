@@ -89,7 +89,7 @@ class Industrys extends Component{
                     onCheck={(values)=>{this.handleIndustrys(values)}}
                     checkedKeys={this.state.selectedIndustrys}
                 >
-                    <TreeNode title="全类目" key="0000">
+                    <TreeNode title="全类目">
                         {this.renderTreeNodes(this.state.industrys)}
                     </TreeNode>
                 </Tree>

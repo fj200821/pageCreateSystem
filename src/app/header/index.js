@@ -5,6 +5,7 @@ import {
 } from 'antd';
 import './index.less';
 import React, {Component} from 'react';
+import * as Model from '../../model';
 message.config({
     top: 50,
     duration: 1,
@@ -25,14 +26,20 @@ class Page extends Component {
     }
 
     save=()=>{
-        message.success('保存成功');
+        Model.update(()=>{
+            message.success('保存成功');
+        })
     }
 
     publish=()=>{
-        if(!Gdata.globalConfig.title.value || !Gdata.components.length){
-            message.error('发布失败，必须有标题和最少一个组件实例');
+        if(!Gdata.globalConfig.title){
+            message.error('发布失败，必须有标题和');
         }else{
-            message.success('发布成功');
+            let iframe = document.querySelector('.viewer-iframe').contentDocument;
+            let htmls = ['<html><head>',iframe.head.innerHTML,'</head><body>',iframe.body.innerHTML,'</body></html>'];
+            Model.publish(htmls.join(''),()=>{
+                message.success('保存成功');
+            })
         }
     }
 

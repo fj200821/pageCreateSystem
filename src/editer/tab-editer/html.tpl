@@ -9,23 +9,23 @@
 </style>
 
 <div class="tab-editer">
-    <%if(items[0].type===0){%>
+    <%if(items[0].type===6){%>
     <%for(var i=0;i<items[0].num;i++){%>
     <div>
-        <a href="javascript:;"><img src="<%=items[0].picUrl%>"/></a>
+        <a href="javascript:;" class="J_skip" data-item="<%=encodeURIComponent(JSON.stringify(items[0]))%>" data-order="0" data-async="true"><img src="<%=items[0].picUrl%>"/></a>
     </div>
     <%}%>
     <%}%>
 
     <%if(items[0].type===1){%>
     <div>
-        <a href="javascript:;"><img src="<%=items[0].picUrl%>"/></a>
+        <a href="javascript:;" class="J_skip" data-item="<%=encodeURIComponent(JSON.stringify(items[0]))%>" data-order="0"><img src="<%=items[0].picUrl%>"/></a>
     </div>
     <%}%>
 
     <%if(items[0].type===2){%>
     <div>
-        <a href="javascript:;"><img src="<%=items[0].picUrl%>"/></a>
+        <a href="javascript:;" class="J_skip" data-item="<%=encodeURIComponent(JSON.stringify(items[0]))%>" data-order="0"><img src="<%=items[0].picUrl%>"/></a>
     </div>
     <%}%>
 </div>
