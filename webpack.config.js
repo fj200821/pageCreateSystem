@@ -23,7 +23,7 @@ const webpackConfig = {
     output: {
         filename: "bundle.[chunkhash].js",
         path: __dirname+ "/dist/page",
-        publicPath: "/newpage/"
+        publicPath: "/mofang/"
     },
     module: {
         loaders: [
