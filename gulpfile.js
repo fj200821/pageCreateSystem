@@ -109,6 +109,8 @@ gulp.task('pre', function () {
     delete webpackConfig.devtool;
     delete webpackConfig.entry.mock;
     compile();
+    gulp.src('./src/app/viewer/tpl/iframe.html')
+        .pipe(gulp.dest(webpackConfig.output.path+'/tpl'))
 });
 
 /**
