@@ -28,8 +28,6 @@ class Page extends Component {
                 tpl:tpl,
                 items:[{
                     type:6,
-                    num:1,
-                    async:true,
                     planIds:[],
                     picUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
                 }]
@@ -52,8 +50,7 @@ class Page extends Component {
         window.onMessage("/editer/tab-editer/index.js:edit", (data, callback) => {
             this.setState({
                 items:data.items,
-                callback:callback,
-                activeKey:(data.order+1).toString()
+                callback:callback
             });
             this.show();
         });
@@ -77,12 +74,15 @@ class Page extends Component {
 
     tab1Callback=(value)=>{
         let items = [];
-        items.push({
-            planIds:value.planIds.split(','),
-            type:6,
-            num:value.num,
-            picUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
-        });
+        for(var i=0;i<Number(value.num);i++){
+            items.push(
+                {
+                    planIds:value.planIds.split(','),
+                    type:6,
+                    picUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
+                }
+            )
+        }
         this.state.callback(items);
         this.setState({
             items:items
@@ -116,7 +116,7 @@ class Page extends Component {
             <div style={{display:display}}>
                 <Tabs defaultActiveKey={this.state.activeKey.toString()} activeKey={this.state.activeKey.toString()} onChange={(activeKey)=>{this.setState({activeKey:activeKey})}}>
                     <TabPane tab="指定广告" key="1">
-                        <Tab1 callback={this.tab1Callback} item={this.state.items[0]}/>
+                        <Tab1 callback={this.tab1Callback} item={this.state.items[0]} num={this.state.items.length}/>
                     </TabPane>
                     <TabPane tab="链接" key="2">
                         <Tab2 callback={this.tab2Callback} item={this.state.items[0]}/>

@@ -6,16 +6,13 @@ const FormItem = Form.Item;
 
 class Tab1 extends Component{
     constructor(props){
+        console.log(props.len);
         super(props);
         this.state = {
-            item:props.item || {}
+            item: props.item || {},
+            num: props.num || 1
         }
-    }
 
-    componentWillReceiveProps(nextProps){
-        this.setState({
-            item:nextProps.item || {}
-        })
     }
 
     handleSubmit(){
@@ -46,7 +43,7 @@ class Tab1 extends Component{
                 {...Util.formItemLayout}
             >
                 {getFieldDecorator('num', {
-                    initialValue:this.state.item.num,
+                    initialValue:this.state.num,
                     rules: [{ required: true}]
                 })(
                     <InputNumber min={1} max={3}/>
@@ -65,20 +62,22 @@ class Middle extends Component{
     constructor(props){
         super(props)
         this.state = {
-            item:props.item || {}
+            item:props.item || {},
+            num:props.num
         }
     }
 
     componentWillReceiveProps(nextProps){
         this.setState({
-            item:nextProps.item || {}
+            item:nextProps.item || {},
+            num:nextProps.num
         })
     }
 
     render(){
         let Temp = Form.create()(Tab1);
         return <div>
-            <Temp item={this.state.item} callback={this.props.callback}/>
+            <Temp item={this.state.item} callback={this.props.callback} num={this.state.num}/>
         </div>
     }
 }
