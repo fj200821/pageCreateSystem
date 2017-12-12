@@ -50,13 +50,14 @@ class Page extends Component {
             let iframe = document.querySelector('.viewer-iframe').contentDocument;
             let headHtml = iframe.head.innerHTML;
             headHtml = headHtml.replace(/window.Gdata\s*=\s*\{\}/,'window.Gdata='+JSON.stringify(Gdata));
-            let bodyHtml = '<body style="width: 750px;"> <div class="wrapper"></div> </body>';
+            headHtml = headHtml.replace(/zoom\s*:\s*0\.5\s*;/,'');
+            let bodyHtml = '<body> <div class="wrapper"></div> </body>';
             let htmls = ['<!DOCTYPE html> <html lang="en"><head>',headHtml,'</head>',bodyHtml,'</html>'];
             let html = htmls.join('');
             html = html.replace(/(\d+)px/g,function($0,$1){
                 return Number($1)/100+'rem'
             });
-            Model.publish(html.join(''),()=>{
+            Model.publish(html,()=>{
                 message.success('保存成功');
             })
         }
