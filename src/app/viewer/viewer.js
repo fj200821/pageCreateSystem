@@ -23,7 +23,6 @@ class Page extends Iframe{
     }
 
     render(){
-
         return <div className="m-viewer-container">
             <div className="m-viewer" id='m-viewer'></div>
         </div>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import * as Model from '../../model';
 
 let contentDocument, contentBody, contentWindow, contentWrapper;
 
@@ -44,6 +45,7 @@ class Iframe extends Component {
             this._initIframe();
             let bind=()=>{
                 if(contentWindow.$){
+                    this._getInitData();
                     this._bindEditer();
                 }else{
                     setTimeout(bind,50);
@@ -65,7 +67,18 @@ class Iframe extends Component {
 
 
     _updateIframe() {
+        console.log(contentWindow.Build);
         contentWindow.Build.update(Gdata);
+    }
+
+    _getInitData(){
+        Model.getPageData((res)=>{
+            let add  = Gdata.add;
+            Gdata=JSON.parse(res.modifyData);
+            Gdata.add = add;
+            window.sendMessage('updateIframe');
+            window.sendMessage('toggleLoading');
+        })
     }
 
     iframeRender(viewerEl, data) {

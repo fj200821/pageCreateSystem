@@ -12,10 +12,10 @@ const actions = {
         placeholder: "请输入计划id",
         type: "planId"
     },
-    4: {
+    7: {
         name: "指定类目",
         placeholder: "请输入类目id",
-        type: "industryId"
+        type: "industryCodes"
     },
     3: {
         name: "游戏互动",
@@ -34,7 +34,7 @@ class Tab extends Component {
         super(props);
         this.state = {
             item: props.item,
-            selectedIndustrys:props.item.industryId || []
+            selectedIndustrys:props.item.industryCodes || []
         };
         this.change(props.item.type);
     }
@@ -47,12 +47,12 @@ class Tab extends Component {
                 return;
             }
             values.picUrl = this.state.item.picUrl;
-            if(values.type==='4'){
+            if(values.type==='7'){
                 if(!this.state.selectedIndustrys.length){
                     message.error('请选择类目');
                     return;
                 }
-                values.industryId = this.state.selectedIndustrys;
+                values.industryCodes = this.state.selectedIndustrys;
             }
             this.props.callback(values);
         });
@@ -66,7 +66,7 @@ class Tab extends Component {
 
     change = (value) => {
 
-        if(value==="4"){
+        if(value==="7"){
             this.renderType=()=>{
                 let type = actions[value].type;
                 console.log(this.state.selectedIndustrys);

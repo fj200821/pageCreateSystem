@@ -79,7 +79,7 @@ class Page extends Component {
         let items = [];
         items.push({
             planIds:value.planIds.split(','),
-            type:0,
+            type:6,
             num:value.num,
             picUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
         });

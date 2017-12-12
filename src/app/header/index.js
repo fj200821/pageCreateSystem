@@ -17,6 +17,18 @@ message.config({
 
 
 class Page extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            showLoading:true
+        };
+
+        window.onMessage('toggleLoading',()=>{
+            this.setState({
+                showLoading:!this.state.showLoading
+            })
+        })
+    }
     editInfo(){
         window.sendMessage('/editer/globalConfig-editer/index.js:edit',Gdata.globalConfig,function(data){
             Gdata.globalConfig = JSON.parse(JSON.stringify(data));
@@ -36,7 +48,10 @@ class Page extends Component {
             message.error('发布失败，必须有标题和');
         }else{
             let iframe = document.querySelector('.viewer-iframe').contentDocument;
-            let htmls = ['<html><head>',iframe.head.innerHTML,'</head><body>',iframe.body.innerHTML,'</body></html>'];
+            let headHtml = iframe.head.innerHTML;
+            headHtml = headHtml.replace(/window.Gdata\s*=\s*\{\}/,'window.Gdata='+JSON.stringify(Gdata));
+            let bodyHtml = '<body style="width: 750px;"> <div class="wrapper"></div> </body>';
+            let htmls = ['<!DOCTYPE html> <html lang="en"><head>',headHtml,'</head>',bodyHtml,'</html>'];
             Model.publish(htmls.join(''),()=>{
                 message.success('保存成功');
             })

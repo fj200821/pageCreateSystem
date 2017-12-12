@@ -12,10 +12,10 @@ const actions = {
         placeholder: "请输入计划id",
         type: "planId"
     },
-    4: {
+    7: {
         name: "指定类目",
         placeholder: "请输入类目id",
-        type: "industryId"
+        type: "industryCodes"
     },
     3: {
         name: "游戏互动",
