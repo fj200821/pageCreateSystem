@@ -20,8 +20,8 @@ class Iframe extends Component {
         let $ = contentWindow.$;
         $(contentBody).on('click', '.J_editer', function () {
             window.sendMessage('hideEditer');
-            let component = JSON.parse(decodeURIComponent($(this).data('component')));
             let order = Number($(this).data('order'));
+            let component = Gdata.components[order];
             setTimeout(()=>{
                 window.sendMessage('/editer/' + component.editer + '/index.js:edit', {items: component.items, order: order}, (items) => {
                     Gdata.components[order].items = items;
@@ -67,7 +67,6 @@ class Iframe extends Component {
 
 
     _updateIframe() {
-        console.log(contentWindow.Build);
         contentWindow.Build.update(Gdata);
     }
 

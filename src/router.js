@@ -2,7 +2,7 @@ import Layout from './app/layout';
 
 const routeConfig = [
     {
-        path: '/mofang/index.html',
+        path: window.location.href.indexOf('h6')>-1?'/':'/mofang/index.html',
         component: Layout
     }
 ];

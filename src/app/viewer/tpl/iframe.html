@@ -52,7 +52,7 @@
                 var html='';
                 Gdata.components.forEach(function(component,order){
                     var newHtml=ejs.render(component.tpl,{items:component.items});
-                    html += ('<div class="J_editer" data-component="'+encodeURIComponent(JSON.stringify(component))+'" data-order="'+order+'" style="margin-top: '+component.base.marginTop+'px;">'+newHtml+'</div>');
+                    html += ('<div class="J_editer" data-order="'+order+'" style="margin-top: '+component.base.marginTop+'px;">'+newHtml+'</div>');
                 });
                 html = html.replace(/(\d+)px/g,function($0,$1){
                     return Number($1)/100+'rem'

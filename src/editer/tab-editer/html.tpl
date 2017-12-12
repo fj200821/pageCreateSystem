@@ -19,7 +19,7 @@
     <%if(items[0].type===6){%>
     <%for(var i=0;i<items[0].num;i++){%>
     <div>
-        <a href="<%=(items[0].redirectUrl || 'javascript:;')%>" data-item="<%=encodeURIComponent(JSON.stringify(items[0]))%>" data-order="0" data-async="true"><img src="<%=items[0].picUrl%>"/></a>
+        <a href="<%=(items[i].redirectUrl || 'javascript:;')%>" data-item="<%=encodeURIComponent(JSON.stringify(items[i]))%>" data-order="0" data-async="true"><img src="<%=items[i].picUrl%>"/></a>
     </div>
     <%}%>
     <%}%>

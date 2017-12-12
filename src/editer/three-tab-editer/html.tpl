@@ -17,13 +17,13 @@
     }
 </style>
 <div class="three-tab-editer clearfix">
-    <a class="block"  href="<%=(items[0].redirectUrl || 'javascript:;')%>">
+    <a href="<%=(items[0].redirectUrl || 'javascript:;')%>">
         <img src="<%=items[0].picUrl%>"/>
     </a>
-    <a class="block"  href="<%=(items[1].redirectUrl || 'javascript:;')%>">
+    <a href="<%=(items[1].redirectUrl || 'javascript:;')%>">
         <img src="<%=items[1].picUrl%>"/>
     </a>
-    <a class="block"  href="<%=(items[2].redirectUrl || 'javascript:;')%>">
+    <a href="<%=(items[2].redirectUrl || 'javascript:;')%>">
         <img src="<%=items[2].picUrl%>"/>
     </a>
 </div>
