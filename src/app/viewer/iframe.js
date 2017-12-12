@@ -40,7 +40,7 @@ class Iframe extends Component {
         let iframe = document.createElement('iframe');
         iframe.className = 'viewer-iframe';
         this.iframe = iframe;
-        iframe.src = "/tpl/iframe.html?isEditer=true";
+        iframe.src = "/mofang/tpl/iframe.html?isEditer=true";
         this.iframe.onload = () => {
             this._initIframe();
             let bind=()=>{
