@@ -52,7 +52,11 @@ class Page extends Component {
             headHtml = headHtml.replace(/window.Gdata\s*=\s*\{\}/,'window.Gdata='+JSON.stringify(Gdata));
             let bodyHtml = '<body style="width: 750px;"> <div class="wrapper"></div> </body>';
             let htmls = ['<!DOCTYPE html> <html lang="en"><head>',headHtml,'</head>',bodyHtml,'</html>'];
-            Model.publish(htmls.join(''),()=>{
+            let html = htmls.join('');
+            html = html.replace(/(\d+)px/g,function($0,$1){
+                return Number($1)/100+'rem'
+            });
+            Model.publish(html.join(''),()=>{
                 message.success('保存成功');
             })
         }
