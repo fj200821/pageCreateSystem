@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Upload,Icon,Button} from 'antd';
+import {Upload,Icon,Button,message} from 'antd';
 import axios from 'axios';
 
 
@@ -43,8 +43,11 @@ class upload extends Component{
             headers: {"Content-Type": "text/plain"},
         }).then(function (res) {
             callback(res.data);
+        }).catch(function(error){
+            message.error(error.message);
         })
     }
+
 
     render(){
         const { uploading } = this.state;
