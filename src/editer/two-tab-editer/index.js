@@ -98,6 +98,7 @@ class TwoTabPage extends Component {
     tabCallback = (index,values)=>{
         let items = JSON.parse(JSON.stringify(this.state.items));
         items[index] = values;
+        debugger
         this.setState({
             items:items
         });

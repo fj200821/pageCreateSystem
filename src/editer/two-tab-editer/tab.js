@@ -61,6 +61,9 @@ class Tab extends Component {
     updateCallback = (res) => {
         let item = Object.assign({},this.state.item);
         item.picUrl = res.data.url;
+        this.setState({
+            item:item
+        })
     };
 
 
