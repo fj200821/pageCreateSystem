@@ -32,7 +32,53 @@
         !function(e,i){var t=e.documentElement,n=navigator.userAgent.match(/iphone|ipod|ipad/gi),a=n?Math.min(i.devicePixelRatio,3):1,m="orientationchange"in window?"orientationchange":"resize";t.dataset.dpr=a;for(var d,l,c=!1,o=e.getElementsByTagName("meta"),r=0;r<o.length;r++)l=o[r],"viewport"==l.name&&(c=!0,d=l);if(c)d.content="width=device-width,initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no";else{var o=e.createElement("meta");o.name="viewport",o.content="width=device-width,initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no",t.firstElementChild.appendChild(o)}var s=function(){var e=t.clientWidth;e/a>640&&(e=640*a),window.remScale=e/640,t.style.fontSize=100*(e/750)+"px";window.FootfontSize=100*(e/750);};s(),e.addEventListener&&i.addEventListener(m,s,!1)}(document,window);
     </script>
     <script>
-
+        var $tokenId = "betterdsp-" + new Date().getTime() + "-" + Math.random().toString(16).substr(2);
+        /**
+         * 同盾风控
+         * @type {string}
+         */
+        (function () {
+            _fmOpt = {
+                partner: 'betterdsp',
+                appName: 'betterdsp_web',
+                token: $tokenId
+            };
+            var cimg = new Image(1, 1);
+            cimg.onload = function () {
+                _fmOpt.imgLoaded = true;
+            };
+            cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=betterdsp&appName=betterdsp_web&tokenId=" + _fmOpt.token;
+            var fm = document.createElement('script');
+            fm.type = 'text/javascript';
+            fm.async = true;
+            fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime() / 3600000).toFixed(0);
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(fm, s);
+        })();
+    </script>
+    <script>
+        var getCookie = function(name) {
+            var cookieStr = document.cookie.replace(/[ ]/g,""),
+                si = '',
+                cookieArr = [],
+                cookJson = {},
+                tokenStr = '';
+            if(cookieStr.indexOf(';')> -1) {
+                cookieArr = cookieStr.split(';');
+                cookieArr.forEach(function(field){
+                    var arr = field.split('=');
+                    var key = arr[0];
+                    var val = arr[1] || '';
+                    cookJson[key] = val;
+                });
+            }
+            return cookJson[name];
+        };
+        var getMd5Str = function(){
+            var si_ = getCookie('si_');
+            var md5Str = hex_md5(si_+'adbaitai');
+            return md5Str;
+        };
         var getQueryString = function(name){
             var queryJson = {};
             var search = window.location.search;
@@ -83,8 +129,8 @@
                     dataType:'jsonp',
                     data:{
                         pageId:3,
-                        token:'sdfsdf',
-                        tongdunTokenId:'sdfsdfsdf',
+                        token: getMd5Str(),
+                        tongdunTokenId: $tokenId,
                         back:decodeURIComponent(getQueryString('back'))
                     },
                     success:function(res){
