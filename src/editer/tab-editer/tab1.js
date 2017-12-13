@@ -6,7 +6,6 @@ const FormItem = Form.Item;
 
 class Tab1 extends Component{
     constructor(props){
-        console.log(props.len);
         super(props);
         this.state = {
             item: props.item || {},

@@ -20,7 +20,8 @@ class Page extends Component {
                 editer:"pic-editer",//标题组件
                 items:[{
                     type:8,
-                    "picUrl":"//oss.ltcdn.cc/cow/2017/12/06/255w_62h_A73231512552162_origin.png"
+                    picUrl:"//oss.ltcdn.cc/cow/2017/12/06/255w_62h_A73231512552162_origin.png",
+                    width:255
                 }],
                 tpl:tpl
             }
@@ -68,6 +69,7 @@ class Page extends Component {
     handleSubmit = () => {
         let items = JSON.parse(JSON.stringify(this.state.items));
         items[0].picUrl=this.state.picUrl;
+        items[0].width=this.state.picUrl.match(/\/(\d+)w_/)[1];
         this.state.callback(items);
     }
 
