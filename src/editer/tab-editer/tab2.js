@@ -62,28 +62,5 @@ class Tab2 extends Component{
         </Form>
     }
 }
-
-class Middle extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            item:props.item || {}
-        }
-    }
-
-    componentWillReceiveProps(nextProps){
-        this.setState({
-            item:nextProps.item || {}
-        })
-    }
-
-    render(){
-        let Temp = Form.create()(Tab2);
-        return <div>
-            <Temp item={this.state.item} callback={this.props.callback}/>
-        </div>
-    }
-}
-
-export default Middle;
+export default Form.create()(Tab2);
 

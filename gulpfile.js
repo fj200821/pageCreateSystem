@@ -109,13 +109,13 @@ gulp.task('pre', function () {
     delete webpackConfig.devtool;
     delete webpackConfig.entry.mock;
     compile();
-    gulp.src('./src/app/viewer/tpl/iframe.html')
+    gulp.src('./src/app/viewer/tpl/*.html')
         .pipe(gulp.dest(webpackConfig.output.path+'/tpl'))
 });
 
 /**
  * 上线
- * 预发中多了一个replace操作
+ * 比预发多了一个replace操作
  */
 gulp.task('replace', function () {
     gulp.src(webpackConfig.output.path + '/**/**')

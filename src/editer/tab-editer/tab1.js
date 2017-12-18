@@ -7,11 +7,6 @@ const FormItem = Form.Item;
 class Tab1 extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            item: props.item || {},
-            num: props.num || 1
-        }
-
     }
 
     handleSubmit(){
@@ -31,7 +26,7 @@ class Tab1 extends Component{
                 {...Util.formItemLayout}
             >
                 {getFieldDecorator('planIds', {
-                    initialValue:this.state.item.planIds?this.state.item.planIds.join(','):'',
+                    initialValue:this.props.item?this.props.item.planIds.join(','):'',
                     rules: [{ required: true}]
                 })(
                     <Input placeholder="请输入广告计划id，以英文,隔开"/>
@@ -42,7 +37,7 @@ class Tab1 extends Component{
                 {...Util.formItemLayout}
             >
                 {getFieldDecorator('num', {
-                    initialValue:this.state.num,
+                    initialValue:this.props.num?this.props.num: '',
                     rules: [{ required: true}]
                 })(
                     <InputNumber min={1} max={3}/>
@@ -57,28 +52,28 @@ class Tab1 extends Component{
     }
 }
 
-class Middle extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            item:props.item || {},
-            num:props.num
-        }
-    }
+// class Middle extends Component{
+//     constructor(props){
+//         super(props)
+//         this.state = {
+//             item:props.item || {},
+//             num:props.num
+//         }
+//     }
+//
+//     componentWillReceiveProps(nextProps){
+//         this.setState({
+//             item:nextProps.item || {},
+//             num:nextProps.num
+//         })
+//     }
+//
+//     render(){
+//         let Temp = Form.create()(Tab1);
+//         return <div>
+//             <Temp item={this.state.item} callback={this.props.callback} num={this.state.num}/>
+//         </div>
+//     }
+// }
 
-    componentWillReceiveProps(nextProps){
-        this.setState({
-            item:nextProps.item || {},
-            num:nextProps.num
-        })
-    }
-
-    render(){
-        let Temp = Form.create()(Tab1);
-        return <div>
-            <Temp item={this.state.item} callback={this.props.callback} num={this.state.num}/>
-        </div>
-    }
-}
-
-export default Middle;
+export default Form.create()(Tab1);

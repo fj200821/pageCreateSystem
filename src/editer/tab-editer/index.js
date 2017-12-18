@@ -117,6 +117,7 @@ class Page extends Component {
                 <Tabs defaultActiveKey={this.state.activeKey.toString()} activeKey={this.state.activeKey.toString()} onChange={(activeKey)=>{this.setState({activeKey:activeKey})}}>
                     <TabPane tab="指定广告" key="1">
                         <Tab1 callback={this.tab1Callback} item={this.state.items[0]} num={this.state.items.length}/>
+                        {/*<MiddleTest tab={Tab1} callback={this.tab1Callback} a={this.state.a} item={this.state.items[0]} num={this.state.items.length}></MiddleTest>*/}
                     </TabPane>
                     <TabPane tab="链接" key="2">
                         <Tab2 callback={this.tab2Callback} item={this.state.items[0]}/>
