@@ -87,11 +87,11 @@ class Iframe extends Component {
                     Gdata=JSON.parse(res.modifyData);
                     Gdata.sourceArr? "": Gdata.sourceArr = [];
                     Gdata.add = add;
-                    window.sendMessage('updateIframe');
-                    window.sendMessage('toggleLoading');
                 }
             })
         }
+        window.sendMessage('updateIframe');
+        window.sendMessage('toggleLoading');
     }
 
     iframeRender(viewerEl, data) {
