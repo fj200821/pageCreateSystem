@@ -78,13 +78,15 @@ class Iframe extends Component {
 
     _getInitData(){
         Model.getPageData((res)=>{
-            console.log(JSON.parse(res.modifyData));
-            let add  = Gdata.add;
-            Gdata=JSON.parse(res.modifyData);
-            Gdata.sourceArr? "": Gdata.sourceArr = [];
-            Gdata.add = add;
-            window.sendMessage('updateIframe');
-            window.sendMessage('toggleLoading');
+            if(res.success && res.data.modifyData) {
+                console.log(JSON.parse(res.modifyData));
+                let add  = Gdata.add;
+                Gdata=JSON.parse(res.modifyData);
+                Gdata.sourceArr? "": Gdata.sourceArr = [];
+                Gdata.add = add;
+                window.sendMessage('updateIframe');
+                window.sendMessage('toggleLoading');
+            }
         })
     }
 
