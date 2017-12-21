@@ -22,13 +22,13 @@
     float: left;
     font-weight: 700;
     font-size: 29px;
-    padding-top: 16px;
+    padding-top: 12px;
     padding-left: 15px;
   }
   .news-detail {
     color: #333333;
     font-size: 34px;
-    line-height: 44px;
+    line-height: 47px;
   }
   .news-footer {
     color: #999999;
