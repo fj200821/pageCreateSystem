@@ -72,6 +72,7 @@ Gdata.sourceArr = [
         num: 1
     }
 ]
+Gdata.sourceArr = [];
 Gdata.add = function (data) {
     this.components.push(data);
     window.sendMessage('updateIframe');
