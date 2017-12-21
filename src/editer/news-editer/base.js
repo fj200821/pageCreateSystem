@@ -1,4 +1,4 @@
-function newsFun() {
+let newsFun = function () {
     Zepto(function ($) {
         let parentObj = document.getElementById('news-editer');
         let isFirst = true;

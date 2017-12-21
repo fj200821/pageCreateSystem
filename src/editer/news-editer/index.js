@@ -49,7 +49,7 @@ class Page extends Component {
             type: 'js',
             name: 'newsFun',
             editer: 'news-editer',
-            text: newsFun + '',
+            text: 'var newsFun=' + newsFun,
             loadingTpl: loadingTpl
         });
         Gdata.add(JSON.parse(JSON.stringify(this.state.defaultData)));
