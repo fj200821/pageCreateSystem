@@ -44,6 +44,7 @@ class Page extends Component {
 
 
     add=()=>{
+        console.log('newsFun:',newsFun);
         window.sendMessage('pushSource', {
             type: 'js',
             name: 'newsFun',
