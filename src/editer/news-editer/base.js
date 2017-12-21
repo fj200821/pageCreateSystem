@@ -36,8 +36,8 @@ function newsFun() {
                 //ajax从这里开始
                 $.ajax({
                     type: 'GET',
-                    url: 'http://192.168.10.120/api/public/spider/article/paging',
-                    // url: 'http://crmpre.adbaitai.com/api/public/spider/article/paging',
+                    // url: 'http://192.168.10.120/api/public/spider/article/paging',
+                    url: 'http://crm.adbaitai.com/api/public/spider/article/paging',
                     dataType: 'jsonp',
                     success: function (data) {
                         console.log(data);
