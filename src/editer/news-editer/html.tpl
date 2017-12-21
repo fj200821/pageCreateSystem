@@ -21,18 +21,18 @@
     color: #666666;
     float: left;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 29px;
     padding-top: 16px;
     padding-left: 15px;
   }
   .news-detail {
     color: #333333;
-    font-size: 28px;
-    line-height: 38px;
+    font-size: 34px;
+    line-height: 44px;
   }
   .news-footer {
     color: #999999;
-    font-size: 22px;
+    font-size: 28px;
     width: 100%;
     padding-top: 10px;
   }
