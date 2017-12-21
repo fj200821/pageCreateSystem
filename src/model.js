@@ -49,7 +49,9 @@ export function getPageData(pageId,callback) {
             pageId:pageId
         },
         success:function(res){
-            callback(res.data);
+            if(res.success) {
+                callback(res.data);
+            }
         }
     });
 }

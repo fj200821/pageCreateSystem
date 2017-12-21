@@ -81,13 +81,11 @@ class Iframe extends Component {
         var pageId = getQueryString('pageId');
         if(pageId) {
             Model.getPageData(pageId,(res)=>{
-                if(res.success) {
-                    console.log(JSON.parse(res.data.modifyData));
+                    console.log(JSON.parse(res.modifyData));
                     let add  = Gdata.add;
-                    Gdata=JSON.parse(res.data.modifyData);
+                    Gdata=JSON.parse(res.modifyData);
                     Gdata.sourceArr? "": Gdata.sourceArr = [];
                     Gdata.add = add;
-                }
             })
         }
         window.sendMessage('updateIframe');
