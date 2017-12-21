@@ -11,7 +11,7 @@
     "devpre": "gulp devpre",
     "devproxy": "gulp devproxy",
     "pre": "gulp pre;",
-    "prod": "gulp pre;"
+    "prod": "gulp pre;gulp replace;"
   },
   "author": "",
   "license": "ISC",

@@ -118,6 +118,11 @@ gulp.task('pre', function () {
  * 比预发多了一个replace操作
  */
 gulp.task('replace', function () {
+    webpackConfig.plugins.push(new webpack.DefinePlugin({
+        "process.env": {
+            NODE_ENV: JSON.stringify("production")
+        }
+    }));
     gulp.src(webpackConfig.output.path + '/**/**')
         .pipe(replace('//crmpre.adbaitai.com', '//crm.adbaitai.com'))
         .pipe(gulp.dest(webpackConfig.output.path));
