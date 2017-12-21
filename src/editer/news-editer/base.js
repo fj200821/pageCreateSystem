@@ -42,6 +42,7 @@ let newsFun = function () {
                     success: function (data) {
                         console.log(data);
                         if (data.success) {
+                            _hmt.push(['_trackEvent', 'newspage', 'page', 'literature']);
                             var str = '';
                             for (var i = 0; i < data.data.length; i++) {
                                 str += "<div class='news-item'><div class='news-item-top'><img src='" + data.data[i].userAvatar + "' class='news-item-top-userpic'/><span class='news-item-top-user-name'>" + data.data[i].userName + "</span></div><div class='news-detail'>" + data.data[i].content + "</div><div class='news-footer'>点赞数：" + data.data[i].likesNum + "</div></div>";
