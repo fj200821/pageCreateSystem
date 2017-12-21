@@ -1,18 +1,6 @@
 import util from './compoents/util/util';
 
 
-window.getQueryString = function(name){
-    var queryJson = {};
-    var search = window.location.search;
-    search = search.replace(/^\?/,'');
-    var fields = search.split('&');
-    fields && fields.forEach(function(field){
-        var arr = field.split('=');
-        queryJson[arr[0]] = arr[1];
-    });
-
-    return queryJson[name];
-};
 export function update(callback) {
     let data = {};
     data.name = Gdata.globalConfig.title;
@@ -54,11 +42,11 @@ export function publish(html,callback) {
 }
 
 
-export function getPageData(callback) {
+export function getPageData(pageId,callback) {
     util.request({
         url:'/api/op/collection/page/get',
         data:{
-            pageId:getQueryString('pageId')
+            pageId:pageId
         },
         success:function(res){
             callback(res.data);

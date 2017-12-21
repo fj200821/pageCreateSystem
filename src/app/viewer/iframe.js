@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import * as Model from '../../model';
+require('../../tools');
 
 let contentDocument, contentBody, contentWindow, contentWrapper;
 
@@ -77,17 +78,20 @@ class Iframe extends Component {
     }
 
     _getInitData(){
-        Model.getPageData((res)=>{
-            if(res.success && res.data.modifyData) {
-                console.log(JSON.parse(res.modifyData));
-                let add  = Gdata.add;
-                Gdata=JSON.parse(res.modifyData);
-                Gdata.sourceArr? "": Gdata.sourceArr = [];
-                Gdata.add = add;
-                window.sendMessage('updateIframe');
-                window.sendMessage('toggleLoading');
-            }
-        })
+        var pageId = getQueryString('pageId');
+        if(pageId) {
+            Model.getPageData(pageId,(res)=>{
+                if(res.success && res.data.modifyData) {
+                    console.log(JSON.parse(res.modifyData));
+                    let add  = Gdata.add;
+                    Gdata=JSON.parse(res.modifyData);
+                    Gdata.sourceArr? "": Gdata.sourceArr = [];
+                    Gdata.add = add;
+                    window.sendMessage('updateIframe');
+                    window.sendMessage('toggleLoading');
+                }
+            })
+        }
     }
 
     iframeRender(viewerEl, data) {
