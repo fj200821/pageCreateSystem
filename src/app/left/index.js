@@ -20,7 +20,21 @@ class Page extends Component{
             },()=>{
                 icons=this.state.icons;
             })
-        })
+        });
+        window.onMessage('pushSource', function(obj){
+            let isHave = false;
+            Gdata.sourceArr.forEach((item)=>{
+                if(item.editer === obj.editer) {
+                    item.num ++;
+                    isHave =true;
+                    return;
+                }
+            })
+            if(!isHave){
+                obj.num = 1;
+                Gdata.sourceArr.push(obj);
+            }
+        });
     }
 
     render(){

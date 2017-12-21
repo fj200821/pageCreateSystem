@@ -4,6 +4,7 @@ import TabEditer from '../../editer/tab-editer/index.js';
 import TwoTabEditer from '../../editer/two-tab-editer/index.js';
 import ThreeTabEditer from '../../editer/three-tab-editer/index.js';
 import BaseEditer from '../../editer/base-editer/index';
+import NewsEditer from '../../editer/news-editer/index';
 
 
 class Page extends Component{
@@ -17,6 +18,7 @@ class Page extends Component{
             <TabEditer/>
             <TwoTabEditer/>
             <ThreeTabEditer/>
+            <NewsEditer/>
         </div>
     }
 }

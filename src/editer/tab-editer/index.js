@@ -43,6 +43,11 @@ class Page extends Component {
 
 
     add=()=>{
+        window.sendMessage('pushSource', {
+            type: 'js',
+            editer: 'tab-editer',
+            link: '///oss.ltcdn.cc/game/Theme/Real/Js/iscroll.js'
+        });
         Gdata.add(JSON.parse(JSON.stringify(this.state.defaultData)));
     }
 

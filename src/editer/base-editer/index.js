@@ -83,6 +83,18 @@ class BaseEditer extends Component {
     del=()=>{
         let components = JSON.parse(JSON.stringify(Gdata.components));
         let order = this.state.order;
+        if(Gdata.sourceArr) {
+            Gdata.sourceArr.forEach((item, index)=>{
+                if(item.editer === components[order].editer) {
+                    if(item.num > 1) {
+                        item.num --;
+                    }else {
+                        Gdata.sourceArr.splice(index, 1);
+                    }
+                }
+            })
+        }
+        console.log(Gdata.sourceArr);
         components.splice(order, 1);
         Gdata.components = components;
         window.sendMessage('updateIframe');

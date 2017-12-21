@@ -6,7 +6,7 @@ export function update(callback) {
     data.name = Gdata.globalConfig.title;
     data.id=3;
     data.modifyData = JSON.parse(JSON.stringify(Gdata));
-
+    console.log('data:', data);
     util.request({
         url:'/api/op/collection/page/update',
         method:'POST',

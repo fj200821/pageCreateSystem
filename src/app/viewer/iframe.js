@@ -22,6 +22,7 @@ class Iframe extends Component {
             window.sendMessage('hideEditer');
             let order = Number($(this).data('order'));
             let component = Gdata.components[order];
+            self._selectState($,this);
             setTimeout(()=>{
                 window.sendMessage('/editer/' + component.editer + '/index.js:edit', {items: component.items, order: order}, (items) => {
                     Gdata.components[order].items = items;
@@ -35,7 +36,12 @@ class Iframe extends Component {
             },10);
         })
     }
-
+    _selectState($,parent) {
+        $('.editerSelectState').remove();
+        let tpl = '<div class="editerSelectState" style="position:absolute;width:99%;height:100%;top:0;border:2px dashed #fff;z-index: 1111"></div>';
+        $(parent).css('position', 'relative');
+        $(parent).append(tpl);
+    }
     _setIframe() {
         let iframe = document.createElement('iframe');
         iframe.className = 'viewer-iframe';
@@ -72,8 +78,10 @@ class Iframe extends Component {
 
     _getInitData(){
         Model.getPageData((res)=>{
+            console.log(JSON.parse(res.modifyData));
             let add  = Gdata.add;
             Gdata=JSON.parse(res.modifyData);
+            Gdata.sourceArr? "": Gdata.sourceArr = [];
             Gdata.add = add;
             window.sendMessage('updateIframe');
             window.sendMessage('toggleLoading');

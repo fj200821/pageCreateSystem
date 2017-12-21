@@ -100,7 +100,9 @@
                 var html='';
                 Gdata.components.forEach(function(component,order){
                     var newHtml=ejs.render(component.tpl,{items:component.items});
-                    html += ('<div class="J_editer" data-order="'+order+'" style="margin-top: '+component.base.marginTop+'px;">'+newHtml+'</div>');
+                    console.log('component:',component);
+                    console.log('$:',$);
+                    html += ('<div class="J_editer" id="'+component.editer+'" data-order="'+order+'" style="margin-top: '+component.base.marginTop+'px;">'+newHtml+'</div>');
                 });
                 html = html.replace(/(\d+)px/g,function($0,$1){
                     return Number($1)/100+'rem'
@@ -127,7 +129,8 @@
                 Build.update(Gdata);
 
                 $.ajax({
-                    url:'//crmpre.adbaitai.com/api/1.0/h5/collection/page/data',
+//                    url:'//crmpre.adbaitai.com/api/1.0/h5/collection/page/data',
+                    url:'http://192.168.10.120/api/1.0/h5/collection/page/data',
                     dataType:'jsonp',
                     data:{
                         pageId:3,
@@ -140,6 +143,8 @@
                         for(var i=0;i<components.length;i++){
                             Gdata.components[i].items.forEach(function(item,key){
                                 $.extend(Gdata.components[i].items[key],components[i].items[key])
+                                console.log('Gdata.components[i].items[key]:',Gdata.components[i].items[key])
+                                console.log('components[i].items[key]:',components[i].items[key])
                             })
                         }
                         Build.update(Gdata);
