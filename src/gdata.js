@@ -58,20 +58,20 @@ window.Gdata = {
 };
 
 Gdata.components = [];
-Gdata.sourceArr = [
-    {
-        editer: 'news-editer',
-        type: 'js',
-        link: '//oss.ltcdn.cc/game/Theme/Real/Js/encryption.js',
-        num: 1
-    },
-    {
-        editer: 'tab-editer',
-        type: 'js',
-        text: 'alert(123);',
-        num: 1
-    }
-]
+// Gdata.sourceArr = [
+//     {
+//         editer: 'news-editer',
+//         type: 'js',
+//         link: '//oss.ltcdn.cc/game/Theme/Real/Js/encryption.js',
+//         num: 1
+//     },
+//     {
+//         editer: 'tab-editer',
+//         type: 'js',
+//         text: 'alert(123);',
+//         num: 1
+//     }
+// ]
 Gdata.sourceArr = [];
 Gdata.add = function (data) {
     this.components.push(data);
