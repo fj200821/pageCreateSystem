@@ -81,7 +81,7 @@ class Iframe extends Component {
         var pageId = getQueryString('pageId');
         if(pageId) {
             Model.getPageData(pageId,(res)=>{
-                if(res.success && res.data.modifyData) {
+                if(res.success) {
                     console.log(JSON.parse(res.modifyData));
                     let add  = Gdata.add;
                     Gdata=JSON.parse(res.modifyData);
