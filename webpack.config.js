@@ -9,11 +9,6 @@ plugins.push(new HtmlWebpackPlugin({
     template: './src/app.html',
 }));
 plugins.push(new UglifyJSPlugin());
-plugins.push(new webpack.DefinePlugin({
-    "process.env": {
-        NODE_ENV: JSON.stringify("production")
-    }
-}));
 plugins.push(new webpack.optimize.CommonsChunkPlugin({
     name: "commonjs",
     filename: "common.[chunkhash].js"
