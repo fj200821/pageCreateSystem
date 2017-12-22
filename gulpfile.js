@@ -120,6 +120,7 @@ gulp.task('pre', function () {
 gulp.task('replace', function () {
     gulp.src(webpackConfig.output.path + '/**/**')
         .pipe(replace('//gamepre.ltyun.cc', '//game.ltyun.cc'))
+        .pipe(replace('//crmpre.adbaitai.com', '//crm.adbaitai.com'))
         .pipe(gulp.dest(webpackConfig.output.path));
 });
 
