@@ -121,8 +121,5 @@ gulp.task('replace', function () {
     gulp.src(webpackConfig.output.path + '/**/**')
         .pipe(replace('//crmpre.adbaitai.com', '//crm.adbaitai.com'))
         .pipe(gulp.dest(webpackConfig.output.path));
-    gulp.src(webpackConfig.output.path + '/**/**')
-        .pipe(replace('//gamepre.ltyun.cc', '//game.ltyun.cc'))
-        .pipe(gulp.dest(webpackConfig.output.path));
 });
 

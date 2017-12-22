@@ -37,7 +37,7 @@ let newsFun = function () {
                 $.ajax({
                     type: 'GET',
                     // url: 'http://192.168.10.120/api/public/spider/article/paging',
-                    url: '//gamepre.ltyun.cc/api/public/spider/article/paging',
+                    url: '//game.ltyun.cc/api/public/spider/article/paging',
                     dataType: 'jsonp',
                     success: function (data) {
                         console.log(data);
