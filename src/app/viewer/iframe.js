@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import * as Model from '../../model';
-require('../../tools');
 
 let contentDocument, contentBody, contentWindow, contentWrapper;
 
@@ -78,7 +77,7 @@ class Iframe extends Component {
     }
 
     _getInitData(){
-        var pageId = getQueryString('pageId');
+        var pageId = Gdata.id;
         if(pageId) {
             Model.getPageData(pageId,(res)=>{
                 console.log(JSON.parse(res.modifyData));

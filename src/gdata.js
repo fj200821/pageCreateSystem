@@ -1,3 +1,5 @@
+import tools from './tools'
+let pageId = tools.getQueryString('pageId');
 window.Gdata = {
     "globalConfig": {"title": "test", "bgColor": "#58baf9", "bgImg": ""},
     "components": [{
@@ -73,6 +75,7 @@ Gdata.components = [];
 //     }
 // ]
 Gdata.sourceArr = [];
+Gdata.id = pageId?pageId: false;
 Gdata.add = function (data) {
     this.components.push(data);
     window.sendMessage('updateIframe');

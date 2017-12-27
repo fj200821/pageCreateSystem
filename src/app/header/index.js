@@ -10,7 +10,9 @@ message.config({
     top: 50,
     duration: 1,
 });
-
+/**
+ *页面关闭或者刷新（线上打开）
+ */
 // window.onbeforeunload = function () {
 //     return "Are you sure";
 // };
@@ -38,7 +40,8 @@ class Page extends Component {
     }
 
     save=()=>{
-        Model.update(()=>{
+        Model.update((res)=>{
+            Gdata.id = res;
             message.success('保存成功');
         })
     }

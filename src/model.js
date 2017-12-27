@@ -1,10 +1,11 @@
 import util from './compoents/util/util';
 
-
 export function update(callback) {
     let data = {};
     data.name = Gdata.globalConfig.title;
-    data.id=3;
+    if(Gdata.id) {
+        data.id=Gdata.id;
+    }
     data.modifyData = JSON.parse(JSON.stringify(Gdata));
     console.log('data:', data);
     util.request({
@@ -22,7 +23,9 @@ export function update(callback) {
 export function publish(html,callback) {
     let data = {};
     data.name = Gdata.globalConfig.title;
-    data.id=3;
+    if(Gdata.id) {
+        data.id=Gdata.id;
+    }
     data.modifyData = JSON.parse(JSON.stringify(Gdata));
     data.components = data.modifyData.components;
     data.globalConfig = data.modifyData.globalConfig;
