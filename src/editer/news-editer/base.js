@@ -33,11 +33,15 @@ let newsFun = function () {
 
         window.onscroll = function () {
             if (getScrollTop() + getClientHeight() == getScrollHeight()) {
+                var newsHost = '//gamepre.ltyun.cc';
+                if(window.location.href.indexOf('prod')> -1) {
+                    newsHost = '//game.ltyun.cc';
+                }
                 //ajax从这里开始
                 $.ajax({
                     type: 'GET',
                     // url: 'http://192.168.10.120/api/public/spider/article/paging',
-                    url: '//game.ltyun.cc/api/public/spider/article/paging',
+                    url: newsHost + '/api/public/spider/article/paging',
                     dataType: 'jsonp',
                     success: function (data) {
                         console.log(data);

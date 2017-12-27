@@ -75,7 +75,9 @@ Gdata.components = [];
 //     }
 // ]
 Gdata.sourceArr = [];
-Gdata.id = pageId?pageId: false;
+if(pageId) {
+    Gdata.id = pageId;
+}
 Gdata.add = function (data) {
     this.components.push(data);
     window.sendMessage('updateIframe');
