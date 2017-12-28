@@ -1,7 +1,8 @@
-let newsFun = function () {
+let newsFun = function (options) {
     Zepto(function ($) {
-        let parentObj = document.getElementById('news-editer');
-        let isFirst = true;
+        var parentNode = $('#'+ options.parentId);
+        console.log('parentNode:', parentNode);
+        var isFirst = true;
         //获取滚动条当前的位置
         function getScrollTop() {
             var scrollTop = 0;
@@ -30,13 +31,11 @@ let newsFun = function () {
         function getScrollHeight() {
             return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
         }
-
         window.onscroll = function () {
             if (getScrollTop() + getClientHeight() == getScrollHeight()) {
                 //ajax从这里开始
                 $.ajax({
                     type: 'GET',
-                    // url: 'http://192.168.10.120/api/public/spider/article/paging',
                     url: pageHost + '/api/public/spider/article/paging',
                     dataType: 'jsonp',
                     success: function (data) {
@@ -47,8 +46,10 @@ let newsFun = function () {
                             for (var i = 0; i < data.data.length; i++) {
                                 str += "<div class='news-item'><div class='news-item-top'><img src='" + data.data[i].userAvatar + "' class='news-item-top-userpic'/><span class='news-item-top-user-name'>" + data.data[i].userName + "</span></div><div class='news-detail'>" + data.data[i].content + "</div><div class='news-footer'>点赞数：" + data.data[i].likesNum + "</div></div>";
                             }
-                            $('.wrapper').append(str);
+                            // $('.wrapper').append(str);
+                            $(str).insertBefore('#' + options.scriptId);
                             if(isFirst) {
+                                console.log('isFirst:',isFirst);
                                 Gdata.sourceArr.forEach((item)=>{
                                     if(item.editer === 'news-editer') {
                                         $('body').append(item.loadingTpl);
@@ -63,7 +64,7 @@ let newsFun = function () {
                     }
                 });
             }
-        }
+        };
     });
 }
 module.exports=newsFun;

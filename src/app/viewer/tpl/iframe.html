@@ -104,17 +104,34 @@
             render:function(){
                 var html='';
                 Gdata.components.forEach(function(component,order){
-                    var newHtml=ejs.render(component.tpl,{items:component.items});
-                    console.log('component:',component);
-                    console.log('$:',$);
-                    html += ('<div class="J_editer" id="'+component.editer+'" data-order="'+order+'" style="margin-top: '+component.base.marginTop+'px;">'+newHtml+'</div>');
+                    var newHtml=ejs.render(component.tpl,{items:component.items}),
+                        uniqueId = component.editer +'-'+ order;
+                    html += ('<div class="J_editer" id="'+uniqueId+'" data-order="'+order+'" style="margin-top: '+component.base.marginTop+'px;">'+newHtml+'</div>');
                 });
                 html = html.replace(/(\d+)px/g,function($0,$1){
                     return Number($1)/100+'rem'
                 });
                 document.querySelector('.wrapper').innerHTML = html;
+                //将每个组件的业务代码绑定到对应的组件实例上
+                if(!/isediter/i.test(window.location.href)) {
+                    this.bindCase();
+                }
             },
+            bindCase: function() {
+                Gdata.components.forEach(function(component, order) {
+                    var uniqueId = component.editer +'-'+ order,
+                        scriptStr = '',
+                        options = JSON.stringify({
+                            parentId: uniqueId,
+                            scriptId: uniqueId + '-script'
+                        });
+                    if(component.service){
+                        scriptStr = "<script id='"+uniqueId+"-script'> "+ component.service.fun +";"+component.service.name+"("+ options +");<\/script>";
+                        $('#'+ uniqueId).append(scriptStr);
 
+                    }
+                });
+            },
             renderGlobalConfig:function(){
                 var globalConfig = Gdata.globalConfig;
                 document.title = globalConfig.title;
@@ -138,7 +155,6 @@
                 Build.update(Gdata);
                 $.ajax({
                     url: pageHost + '/api/1.0/h5/collection/page/data',
-//                    url:'http://192.168.10.120/api/1.0/h5/collection/page/data',
                     dataType:'jsonp',
                     data:{
                         pageId:Gdata.id,

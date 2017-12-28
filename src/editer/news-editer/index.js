@@ -3,7 +3,7 @@ import { Form,Icon,Button} from 'antd';
 import Util from '../../compoents/util/util';
 let tpl = require('./html.tpl');
 let loadingTpl = require('./loading.tpl');
-let newsFun = require('./base');
+let newsFun = require('./service');
 const FormItem = Form.Item;
 
 class Page extends Component {
@@ -15,11 +15,7 @@ class Page extends Component {
             callback: function () {
             },
             defaultData: {
-                sourceArr: [
-                    {
-                        text: newsFun + ''
-                    }
-                ],
+                service: {name : 'newsFun', fun: newsFun + ''},
                 base:{},
                 name:"信息流",
                 type:9,
@@ -46,10 +42,7 @@ class Page extends Component {
     add=()=>{
         console.log('newsFun:',newsFun);
         window.sendMessage('pushSource', {
-            type: 'js',
-            name: 'newsFun',
             editer: 'news-editer',
-            text: 'var newsFun=' + newsFun,
             loadingTpl: loadingTpl
         });
         Gdata.add(JSON.parse(JSON.stringify(this.state.defaultData)));
