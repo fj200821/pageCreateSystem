@@ -80,8 +80,11 @@ class Iframe extends Component {
         var pageId = Gdata.id;
         if(pageId) {
             Model.getPageData(pageId,(res)=>{
-                let add  = Gdata.add;
+                let add  = Gdata.add,
+                    globalConfig = JSON.parse(res.globalConfig);
                 Gdata=JSON.parse(res.modifyData);
+
+                if(res.name)globalConfig.title = res.name;
                 Gdata.add = add;
                 Gdata.id = res.id? res.id: '';
                 window.sendMessage('updateIframe');
