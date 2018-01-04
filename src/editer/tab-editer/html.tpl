@@ -33,8 +33,8 @@
     .tab-editer .item-detail .item-detail-right {
         width: 200px;
         float:right;
-        height: 80px;
-        line-height: 80px;
+        height: 70px;
+        line-height: 70px;
         margin-top: 0;
         padding-right: 20px;
     }

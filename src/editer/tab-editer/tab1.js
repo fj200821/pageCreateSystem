@@ -40,7 +40,7 @@ class Tab1 extends Component{
                     initialValue:this.props.num?this.props.num: '',
                     rules: [{ required: true}]
                 })(
-                    <InputNumber min={1} max={3}/>
+                    <InputNumber min={1} max={10}/>
                 )}
             </FormItem>
             <FormItem
