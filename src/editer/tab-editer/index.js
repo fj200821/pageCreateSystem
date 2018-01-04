@@ -29,7 +29,7 @@ class Page extends Component {
                 items:[{
                     type:6,
                     planIds:[],
-                    picUrl:'//oss.ltcdn.cc/cow/2017/12/06/710w_410h_A07AF1512552490_origin.png'
+                    picUrl:'//oss.ltcdn.cc/cow/2017/12/25/670w_310h_5E8601514188757_origin.png'
                 }]
             }
         };

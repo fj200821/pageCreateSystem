@@ -6,6 +6,7 @@ import {
 import './index.less';
 import React, {Component} from 'react';
 import * as Model from '../../model';
+
 message.config({
     top: 50,
     duration: 1,
@@ -40,33 +41,39 @@ class Page extends Component {
     }
 
     save=()=>{
+        // var OpenWindow=window.open("1111?back=123*testFlag=1", "newwin", "height=250, width=250,toolbar=no ,menubar=no");
+        // OpenWindow.document.write(this.concatHtml());
+        // OpenWindow.document.close();
+
         Model.update((res)=>{
             Gdata.id = res;
             message.success('保存成功');
         })
     }
-
     publish=()=>{
         if(!Gdata.globalConfig.title){
             message.error('发布失败，必须有标题和');
         }else{
-            let iframe = document.querySelector('.viewer-iframe').contentDocument;
-            let headHtml = iframe.head.innerHTML;
-            console.log('Gdata.sourceArr:', Gdata)
-            let sourceArr = this.setSource(Gdata.sourceArr);
-            console.log('sourceArr:',sourceArr);
-            headHtml = headHtml.replace(/window.Gdata\s*=\s*\{\}/,'window.Gdata='+JSON.stringify(Gdata));
-            headHtml = headHtml.replace(/zoom\s*:\s*0\.5\s*;/,'');
-            let bodyHtml = '<body> <div class="wrapper"></div> </body>';
-            let htmls = ['<!DOCTYPE html> <html lang="en"><head>',headHtml,sourceArr,'</head>',bodyHtml,'</html>'];
-            let html = htmls.join('');
-            html = html.replace(/(\d+)px/g,function($0,$1){
-                return Number($1)/100+'rem'
-            });
-            Model.publish(html,()=>{
+            Model.publish(this.concatHtml(),()=>{
                 message.success('保存成功');
             })
         }
+    }
+    concatHtml = ()=> {
+        let iframe = document.querySelector('.viewer-iframe').contentDocument;
+        let headHtml = iframe.head.innerHTML;
+        console.log('Gdata.sourceArr:', Gdata)
+        let sourceArr = this.setSource(Gdata.sourceArr);
+        console.log('sourceArr:',sourceArr);
+        headHtml = headHtml.replace(/window.Gdata\s*=\s*\{\}/,'window.Gdata='+JSON.stringify(Gdata));
+        headHtml = headHtml.replace(/zoom\s*:\s*0\.5\s*;/,'');
+        let bodyHtml = '<body> <div class="wrapper"></div> </body>';
+        let htmls = ['<!DOCTYPE html> <html lang="en"><head>',headHtml,sourceArr,'</head>',bodyHtml,'</html>'];
+        let html = htmls.join('');
+        html = html.replace(/(\d+)px/g,function($0,$1){
+            return Number($1)/100+'rem'
+        });
+        return html;
     }
     setSource= (sourceArr)=>{
         var str = '';
