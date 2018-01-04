@@ -21,12 +21,14 @@
         height: 80px;
         margin-top: 0;
         background-color: #fff;
+        margin-top: -34px;
     }
     .tab-editer .item-detail .item-detail-left {
         color: rgb(121,121,121);
         line-height: 80px;
         padding-left: 20px;
         float:left;
+        font-size: 30px;
     }
     .tab-editer .item-detail .item-detail-right {
         width: 200px;
