@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Form,Icon,Button} from 'antd';
+import { Form,Icon,Button,Input,InputNumber} from 'antd';
 import Util from '../../compoents/util/util';
 let tpl = require('./html.tpl');
 let loadingTpl = require('./loading.tpl');
@@ -37,7 +37,16 @@ class Page extends Component {
     componentDidMount() {
         window.sendMessage('renderEditerIcon', <Icon type="layout" key="newsEditerIcon" onClick={this.add}>信息流</Icon>)
     }
-
+    handleSubmit() {
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if (err) {
+                console.log('Received values of form: ', values);
+                return;
+            }
+            Gdata.rate = values.rate;
+            console.log(Gdata);
+        });
+    }
 
     add=()=>{
         console.log('newsFun:',newsFun);
@@ -75,13 +84,30 @@ class Page extends Component {
     }
     render() {
         const {visible, data} = this.state;
+        const { getFieldDecorator } = this.props.form;
         let display = visible?'block':'none';
         return (
             <div style={{display:display}}>
-                test
+                <Form onSubmit={(e)=>{e.preventDefault();this.handleSubmit(0)}}>
+                    <FormItem
+                        label="隔多少出广告:(取值区间3~8)"
+                    >
+                        {getFieldDecorator('rate', {
+                            initialValue:'',
+                            rules: [{ required: true}]
+                        })(
+                            <InputNumber min={3} max={8}/>
+                        )}
+                    </FormItem>
+                    <FormItem
+                        {...Util.tailFormItemLayout}
+                    >
+                        <Button type="primary" htmlType="submit">确定</Button>
+                    </FormItem>
+                </Form>
             </div>
         );
     }
 }
 
-export default Page;
+export default Form.create()(Page);

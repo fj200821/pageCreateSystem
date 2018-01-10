@@ -6,6 +6,9 @@ export function update(callback) {
     if(Gdata.id) {
         data.id=Gdata.id;
     }
+    if(Gdata.rate) {
+        data.rate=Gdata.rate;
+    }
     data.modifyData = JSON.parse(JSON.stringify(Gdata));
     console.log('data:', data);
     util.request({
