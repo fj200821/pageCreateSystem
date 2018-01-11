@@ -59,6 +59,7 @@
   }
   .news-ad-one a {
     display: block;
+    line-height: 50px;
   }
   .news-ad-one-footer {
     height: 40px;
@@ -123,6 +124,7 @@
 <%for(var i=0;i<items.length;i++){%>
 <%if(items[i].data){%>
 <%for(var j=0; j< items[i].data.length; j++){%>
+<%if(items[i].data[j].type==='1'){%>
 <div class='news-item'>
      <div class='news-item-top'>
         <img src='<%=items[i].data[j].userAvatar%>' class='news-item-top-userpic'/>
@@ -133,6 +135,32 @@
         点赞数：<%=items[i].data[j].likesNum%>
      </div>
 </div>
+<%}else if(items[i].data[j].type==='2'){%>
+    <%if(items[i].data[j].creativeType === 4){%>
+        <div class='news-ad-two'>
+                <a href='<%=items[i].data[j].promoteUrl%>'>
+                    <img class='news-ad-two-img' src='<%=items[i].data[j].bannerUrl%>'/>
+                    <div class='news-ad-two-detail'>
+                        <p><%=items[i].data[j].name%></p>
+                        <div class='news-ad-two-footer'>
+                             <span class='news-ad-two-tip'>广告</span>
+                        </div>
+                    </div>
+                    <div class='clear'></div>
+                </a>
+         </div>
+    <%}else{%>
+        <div class='news-ad-one'>
+                    <p><%=items[i].data[j].name%></p>
+                    <a href='<%=items[i].data[j].promoteUrl%>'>
+                        <img class='news-ad-one-img' src='<%=items[i].data[j].bannerUrl%>'/>
+                    </a>
+                    <div class='news-ad-one-footer'>
+                        <span class='news-ad-one-tip'>广告</span>
+                    </div>
+                </div>
+    <%}%>
+<%}%>
 <%}%>
 <%}else{%>
 <div class='news-item'>
@@ -144,28 +172,6 @@
      <div class='news-footer'>
         点赞数：<%=items[i].likesNum%>
      </div>
-</div>
-<div class='news-ad-one'>
-    <p>十九大后习近平对中国经济给出这8大论断。</p>
-    <a href='http://www.baidu.com'>
-        <img class='news-ad-one-img' src='//ww1.sinaimg.cn/large/005QDhBjgy1fna6q0dv7yj30j604ggnv.jpg'/>
-    </a>
-    <div class='news-ad-one-footer'>
-        <span class='news-ad-one-tip'>广告</span>
-    </div>
-</div>
-
-<div class='news-ad-two'>
-    <a href=''>
-        <img class='news-ad-two-img' src='http://ww1.sinaimg.cn/large/005QDhBjgy1fna7mb7avrj306404ggls.jpg'/>
-        <div class='news-ad-two-detail'>
-            <p>十九大后习近平对中国经济给出这8大十九大后习近平对中国经济给出这8大</p>
-            <div class='news-ad-two-footer'>
-                 <span class='news-ad-two-tip'>广告</span>
-            </div>
-        </div>
-        <div class='clear'></div>
-    </a>
 </div>
 <%}%>
 <%}%>
