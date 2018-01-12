@@ -41,7 +41,9 @@ class Page extends Component {
     }
 
     save=()=>{
-        // var OpenWindow=window.open("1111?back=123*testFlag=1", "newwin", "height=250, width=250,toolbar=no ,menubar=no");
+        // var iTop = (window.screen.availHeight - 30 - 375) / 2;
+        // var iLeft = (window.screen.availWidth - 10 - 667) / 2;
+        // var OpenWindow=window.open("1111?back=123*testFlag=1", "newwin", "height=667, width=375,toolbar=no ,menubar=no,top="+iTop+",left="+iLeft);
         // OpenWindow.document.write(this.concatHtml());
         // OpenWindow.document.close();
 

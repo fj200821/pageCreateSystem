@@ -43,8 +43,7 @@ class Page extends Component {
                 console.log('Received values of form: ', values);
                 return;
             }
-            Gdata.rate = values.rate;
-            console.log(Gdata);
+            Gdata.interval = values.interval;
         });
     }
 
@@ -92,7 +91,7 @@ class Page extends Component {
                     <FormItem
                         label="隔多少出广告:(取值区间3~8)"
                     >
-                        {getFieldDecorator('rate', {
+                        {getFieldDecorator('interval', {
                             initialValue:'',
                             rules: [{ required: true}]
                         })(
