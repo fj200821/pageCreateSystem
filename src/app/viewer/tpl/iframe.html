@@ -127,7 +127,7 @@
                         });
                     if(component.service){
                         scriptStr = "<script id='"+uniqueId+"-script'> "+ component.service.fun +";"+component.service.name+"("+ options +");<\/script>";
-                        $('#'+ uniqueId).append(scriptStr);
+                        document.getElementById(uniqueId).appendChild(scriptStr);
 
                     }
                 });
