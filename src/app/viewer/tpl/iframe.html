@@ -131,7 +131,7 @@
                             parentDiv = document.getElementById(uniqueId);
                         console.log('parentDiv:',parentDiv);
                         scriptDiv.id = uniqueId + '-script';
-                        scriptDiv.innerHTML = component.service.fun + ';' + component.service.name + '(' + options + ')';
+                        scriptDiv.innerHTML = '('+component.service.fun +')('+options+');';
                         if(parentDiv) {
                             parentDiv.appendChild(scriptDiv);
                         }
