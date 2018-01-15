@@ -6,8 +6,8 @@ export function update(callback) {
     if(Gdata.id) {
         data.id=Gdata.id;
     }
-    if(Gdata.rate) {
-        data.rate=Gdata.rate;
+    if(Gdata.interval) {
+        data.interval=Gdata.interval;
     }
     data.modifyData = JSON.parse(JSON.stringify(Gdata));
     console.log('data:', data);
@@ -28,6 +28,9 @@ export function publish(html,callback) {
     data.name = Gdata.globalConfig.title;
     if(Gdata.id) {
         data.id=Gdata.id;
+    }
+    if(Gdata.interval) {
+        data.interval=Gdata.interval;
     }
     data.modifyData = JSON.parse(JSON.stringify(Gdata));
     data.components = data.modifyData.components;

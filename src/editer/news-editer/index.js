@@ -16,7 +16,7 @@ class Page extends Component {
             callback: function () {
             },
             defaultData: {
-                service: {name : 'newsFun', fun: newsFun + ''},
+                service: {fun: newsFun + ''},
                 base:{},
                 name:"信息流",
                 type:9,

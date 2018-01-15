@@ -80,6 +80,7 @@ class Page extends Component {
     setSource= (sourceArr)=>{
         var str = '';
         sourceArr.forEach((item, index)=>{
+            //有待优化，本地是有名函数，但是通过打包到线上就变成了无名函数，service的已经改成自执行函数（在iframe.html 中）
             console.log(index)
             if(item.type === 'js') {
                 str += item.link?'<script src="'+item.link+'"></script>':"";
