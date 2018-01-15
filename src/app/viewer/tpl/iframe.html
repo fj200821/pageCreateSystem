@@ -126,8 +126,11 @@
                             scriptId: uniqueId + '-script'
                         });
                     if(component.service){
-                        scriptStr = "<script id='"+uniqueId+"-script'> "+ component.service.fun +";"+component.service.name+"("+ options +");<\/script>";
-                        document.getElementById(uniqueId).appendChild(scriptStr);
+//                        scriptStr = "<script id='"+uniqueId+"-script'> "+ component.service.fun +";"+component.service.name+"("+ options +");<\/script>";
+                        var scriptDiv = document.createElement('script');
+                        scriptDiv.id = uniqueId + '-script';
+                        scriptDiv.innerHTML = component.service.fun + ';' + component.service.name + '(' + options + ')';
+                        document.getElementById(uniqueId).appendChild(scriptDiv);
 
                     }
                 });
