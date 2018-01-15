@@ -4,6 +4,7 @@ import Util from '../../compoents/util/util';
 let tpl = require('./html.tpl');
 let loadingTpl = require('./loading.tpl');
 let newsFun = require('./service');
+console.log(newsFun);
 const FormItem = Form.Item;
 
 class Page extends Component {
@@ -15,7 +16,7 @@ class Page extends Component {
             callback: function () {
             },
             defaultData: {
-                service: {name : 'newsFun', fun: newsFun + ''},
+                service: {name : 'newsFun', fun: 'var newsFun='+newsFun},
                 base:{},
                 name:"信息流",
                 type:9,

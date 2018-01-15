@@ -1,4 +1,4 @@
-let newsFun = function (options) {
+module.exports = function (options) {
     Zepto(function ($) {
         var parentNode = $('#'+ options.parentId);
         console.log('parentNode:', parentNode);
@@ -82,4 +82,3 @@ let newsFun = function (options) {
         };
     });
 }
-module.exports=newsFun;
