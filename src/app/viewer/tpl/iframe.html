@@ -127,11 +127,14 @@
                         });
                     if(component.service){
 //                        scriptStr = "<script id='"+uniqueId+"-script'> "+ component.service.fun +";"+component.service.name+"("+ options +");<\/script>";
-                        var scriptDiv = document.createElement('script');
+                        var scriptDiv = document.createElement('script'),
+                            parentDiv = document.getElementById(uniqueId);
+                        console.log('parentDiv:',parentDiv);
                         scriptDiv.id = uniqueId + '-script';
                         scriptDiv.innerHTML = component.service.fun + ';' + component.service.name + '(' + options + ')';
-                        document.getElementById(uniqueId).appendChild(scriptDiv);
-
+                        if(parentDiv) {
+                            parentDiv.appendChild(scriptDiv);
+                        }
                     }
                 });
             },
