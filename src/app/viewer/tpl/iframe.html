@@ -150,13 +150,34 @@
                 this.renderGlobalConfig();
             }
         };
-
         //如果不是非编辑模式
-        if(!/isediter/i.test(window.location.href)){
-            var pageHost = '//gamepre.ltyun.cc';
-            if(window.location.href.indexOf('prod')> -1) {
-                pageHost = '//game.ltyun.cc';
-            }
+        var pageHost = '//gamepre.ltyun.cc';
+        if(window.location.href.indexOf('prod')> -1) {
+            pageHost = '//game.ltyun.cc';
+        }
+        if(window.preView) {
+            //预览模式下
+            $.ajax({
+//                url: pageHost + '/api/1.0/h5/collection/page/preview',
+                url: pageHost + '/api/1.0/h5/collection/page/preview',
+                type: 'POST',
+                data: {
+                    data: JSON.stringify(Gdata)
+                },
+                success:function(res){
+                    console.log(res);
+                    var components = res.data.components;
+                    for(var i=0;i<components.length;i++){
+                        Gdata.components[i].items.forEach(function(item,key){
+                            $.extend(Gdata.components[i].items[key],components[i].items[key]);
+                        })
+                    }
+                    Build.update(Gdata);
+                }
+            });
+
+        }else if(!/isediter/i.test(window.location.href)){
+
             $(function(){
                 Build.update(Gdata);
                 $.ajax({
@@ -167,7 +188,6 @@
                         token: getMd5Str(),
                         tongdunTokenId: $tokenId,
                         back:decodeURIComponent(getQueryString('back'))
-//                        back:'{"pid":"12_17_140","source":4,"testFlag":1}'
                     },
                     success:function(res){
                         var components = res.data.components;
