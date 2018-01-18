@@ -1,0 +1,224 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="always" name="referrer">
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>百泰文化</title>
+    <link rel="stylesheet" href="//assets.geilicdn.com/??v-components/cdn/0.0.4/commoncss/normalize.min.css,v-components/cdn/0.0.4/commoncss/common.min.css"/>
+    <style type="text/css">
+        body, .wrapper {
+            background: no-repeat center top;
+        }
+        .wrapper {
+            min-height: 100%;
+            width: 750px;
+            overflow-x:hidden;
+        }
+        .wrapper::-webkit-scrollbar{
+            width: 2px;
+            height: auto;
+
+        }
+        body{
+            zoom:0.5;
+        }
+
+        a{
+            display: inline-block;
+        }
+    </style>
+    <script src="//imgcow.oss-cn-hangzhou.aliyuncs.com/prod/baitai-components/home/ejs.min.js"></script>
+    <script src="//oss.ltcdn.cc/game/Js/zepto.min.js"></script>
+    <script src="//oss.ltcdn.cc/game/Theme/Real/Js/encryption.js"></script>
+    <script>
+        !function(e,i){var t=e.documentElement,n=navigator.userAgent.match(/iphone|ipod|ipad/gi),a=n?Math.min(i.devicePixelRatio,3):1,m="orientationchange"in window?"orientationchange":"resize";t.dataset.dpr=a;for(var d,l,c=!1,o=e.getElementsByTagName("meta"),r=0;r<o.length;r++)l=o[r],"viewport"==l.name&&(c=!0,d=l);if(c)d.content="width=device-width,initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no";else{var o=e.createElement("meta");o.name="viewport",o.content="width=device-width,initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no",t.firstElementChild.appendChild(o)}var s=function(){var e=t.clientWidth;e/a>640&&(e=640*a),window.remScale=e/640,t.style.fontSize=100*(e/750)+"px";window.FootfontSize=100*(e/750);};s(),e.addEventListener&&i.addEventListener(m,s,!1)}(document,window);
+    </script>
+    <script>
+        var $tokenId = "betterdsp-" + new Date().getTime() + "-" + Math.random().toString(16).substr(2);
+        /**
+         * 同盾风控
+         * @type {string}
+         */
+        (function () {
+            _fmOpt = {
+                partner: 'betterdsp',
+                appName: 'betterdsp_web',
+                token: $tokenId
+            };
+            var cimg = new Image(1, 1);
+            cimg.onload = function () {
+                _fmOpt.imgLoaded = true;
+            };
+            cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=betterdsp&appName=betterdsp_web&tokenId=" + _fmOpt.token;
+            var fm = document.createElement('script');
+            fm.type = 'text/javascript';
+            fm.async = true;
+            fm.src = '//static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime() / 3600000).toFixed(0);
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(fm, s);
+        })();
+
+    </script>
+    <script>
+        var getCookie = function(name) {
+            var cookieStr = document.cookie.replace(/[ ]/g,""),
+                si = '',
+                cookieArr = [],
+                cookJson = {},
+                tokenStr = '';
+            if(cookieStr.indexOf(';')> -1) {
+                cookieArr = cookieStr.split(';');
+                cookieArr.forEach(function(field){
+                    var arr = field.split('=');
+                    var key = arr[0];
+                    var val = arr[1] || '';
+                    cookJson[key] = val;
+                });
+            }
+            return cookJson[name];
+        };
+        var getMd5Str = function(){
+            var si_ = getCookie('si_');
+            var md5Str = hex_md5(si_+'adbaitai');
+            return md5Str;
+        };
+        var getQueryString = function(name){
+            var queryJson = {};
+            var search = window.location.search;
+            search = search.replace(/^\?/,'');
+            var fields = search.split('&');
+            fields && fields.forEach(function(field){
+                var arr = field.split('=');
+                queryJson[arr[0]] = arr[1];
+            });
+
+            return queryJson[name] || '';
+        };
+
+        window.Gdata = {};
+        window.Build = {
+            render:function(){
+                var html='';
+                Gdata.components.forEach(function(component,order){
+                    var newHtml=ejs.render(component.tpl,{items:component.items}),
+                        uniqueId = component.editer +'-'+ order;
+                    html += ('<div class="J_editer" id="'+uniqueId+'" data-order="'+order+'" style="margin-top: '+component.base.marginTop+'px;">'+newHtml+'</div>');
+                });
+                html = html.replace(/(\d+)px/g,function($0,$1){
+                    return Number($1)/100+'rem'
+                });
+                document.querySelector('.wrapper').innerHTML = html;
+                //将每个组件的业务代码绑定到对应的组件实例上
+                if(!/isediter/i.test(window.location.href)) {
+                    this.bindCase();
+                }
+            },
+            bindCase: function() {
+                Gdata.components.forEach(function(component, order) {
+                    var uniqueId = component.editer +'-'+ order,
+                        scriptStr = '',
+                        options = JSON.stringify({
+                            parentId: uniqueId,
+                            scriptId: uniqueId + '-script'
+                        });
+                    if(component.service){
+//                        scriptStr = "<script id='"+uniqueId+"-script'> "+ component.service.fun +";"+component.service.name+"("+ options +");<\/script>";
+                        var scriptDiv = document.createElement('script'),
+                            parentDiv = document.getElementById(uniqueId);
+                        console.log('parentDiv:',parentDiv);
+                        scriptDiv.id = uniqueId + '-script';
+                        scriptDiv.innerHTML = '('+component.service.fun +')('+options+');';
+                        if(parentDiv) {
+                            parentDiv.appendChild(scriptDiv);
+                        }
+                    }
+                });
+            },
+            renderGlobalConfig:function(){
+                var globalConfig = Gdata.globalConfig;
+                document.title = globalConfig.title;
+                globalConfig.bgColor && (document.body.style['background-color'] = globalConfig.bgColor);
+                globalConfig.bgImg && (document.querySelector('.wrapper').style['background-image'] = 'url('+globalConfig.bgImg+')');
+            },
+            update:function(data){
+                Gdata = data;
+                this.render();
+                this.renderGlobalConfig();
+            }
+        };
+        //如果不是非编辑模式
+        var pageHost = '//gamepre.ltyun.cc';
+        if(window.location.href.indexOf('prod')> -1) {
+            pageHost = '//game.ltyun.cc';
+        }
+        if(window.preView) {
+            //预览模式下
+            $.ajax({
+//                url: pageHost + '/api/1.0/h5/collection/page/preview',
+                url: pageHost + '/api/1.0/h5/collection/page/preview',
+                type: 'POST',
+                data: {
+                    data: JSON.stringify(Gdata)
+                },
+                success:function(res){
+                    console.log(res);
+                    var components = res.data.components;
+                    for(var i=0;i<components.length;i++){
+                        Gdata.components[i].items.forEach(function(item,key){
+                            $.extend(Gdata.components[i].items[key],components[i].items[key]);
+                        })
+                    }
+                    Build.update(Gdata);
+                }
+            });
+
+        }else if(!/isediter/i.test(window.location.href)){
+
+            $(function(){
+                Build.update(Gdata);
+                $.ajax({
+                    url: pageHost + '/api/1.0/h5/collection/page/data',
+                    dataType:'jsonp',
+                    data:{
+                        pageId:Gdata.id,
+                        token: getMd5Str(),
+                        tongdunTokenId: $tokenId,
+                        back:decodeURIComponent(getQueryString('back'))
+                    },
+                    success:function(res){
+                        var components = res.data.components;
+                        for(var i=0;i<components.length;i++){
+                            Gdata.components[i].items.forEach(function(item,key){
+                                $.extend(Gdata.components[i].items[key],components[i].items[key])
+                                console.log('Gdata.components[i].items[key]:',Gdata.components[i].items[key])
+                                console.log('components[i].items[key]:',components[i].items[key])
+                            })
+                        }
+                        Build.update(Gdata);
+                    }
+                });
+                $('.J_editer').click(function(){
+
+                })
+            })
+        }
+
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?0d63ad45f3af87965572065c53e76995";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<div class="wrapper"></div>
+</body>
+</html>
