@@ -43,7 +43,7 @@ class Page extends Component {
         var iTop = (window.screen.availHeight - 30 - 375) / 2;
         var iLeft = (window.screen.availWidth - 10 - 667) / 2;
         var OpenWindow=window.open("1111?back=123*testFlag=1", "newwin", "height=667, width=375,toolbar=no ,menubar=no,top="+iTop+",left="+iLeft);
-        OpenWindow.document.write(this.concatHtml());
+        OpenWindow.document.write(this.concatHtml(true));
         OpenWindow.document.close();
     }
     save=()=>{
@@ -61,17 +61,22 @@ class Page extends Component {
             })
         }
     }
-    concatHtml = ()=> {
+    concatHtml = (isPreView)=> {
         let iframe = document.querySelector('.viewer-iframe').contentDocument;
         let headHtml = iframe.head.innerHTML;
         console.log('Gdata.sourceArr:', Gdata);
-        let preView = '<script>window.preView='+true+'</script>';
         let sourceArr = this.setSource(Gdata.sourceArr);
         console.log('sourceArr:',sourceArr);
         headHtml = headHtml.replace(/window.Gdata\s*=\s*\{\}/,'window.Gdata='+JSON.stringify(Gdata));
         headHtml = headHtml.replace(/zoom\s*:\s*0\.5\s*;/,'');
         let bodyHtml = '<body> <div class="wrapper"></div> </body>';
-        let htmls = ['<!DOCTYPE html> <html lang="en"><head>',preView,headHtml,sourceArr,'</head>',bodyHtml,'</html>'];
+        console.log('isPreView:',isPreView);
+        if(isPreView) {
+            let preView = '<script>window.preView='+true+'</script>';
+            var htmls = ['<!DOCTYPE html> <html lang="en"><head>',preView,headHtml,sourceArr,'</head>',bodyHtml,'</html>'];
+        }else {
+            var htmls = ['<!DOCTYPE html> <html lang="en"><head>',headHtml,sourceArr,'</head>',bodyHtml,'</html>'];
+        }
         let html = htmls.join('');
         html = html.replace(/(\d+)px/g,function($0,$1){
             return Number($1)/100+'rem'
