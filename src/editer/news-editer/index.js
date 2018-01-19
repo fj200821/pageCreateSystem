@@ -24,10 +24,10 @@ class Page extends Component {
                 tpl:tpl,
                 items:[{
                     type:9,
-                    userName: 'test',
-                    userAvatar:'//imgcow.oss-cn-hangzhou.aliyuncs.com/game/Images/IMG_6755.png',
-                    content:'十九大后习近平对中国经济给出这8大论断互动互动 两任中央纪委书记的共同任务点击点击接哦委婉人及 点击接单及附近及看上。',
-                    likesNum: '666'
+                    userName: '----',
+                    userAvatar:'//oss.ltcdn.cc/game/Images/IMG_6755.png',
+                    content:'------------------------------------------------------------------------------------',
+                    likesNum: '----'
                 }]
             }
         };

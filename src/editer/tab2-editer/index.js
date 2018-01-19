@@ -26,7 +26,7 @@ class Page extends Component {
                 items:[{
                     type:6,
                     planIds:[],
-                    picUrl:'//oss.ltcdn.cc/cow/2017/12/25/670w_310h_5E8601514188757_origin.png'
+                    picUrl:'//oss.ltcdn.cc/game/Images/mofang/tab2-base-image.png'
                 }]
             }
         };
@@ -81,7 +81,7 @@ class Page extends Component {
                 {
                     planIds:value.planIds.split(','),
                     type:6,
-                    picUrl:'//oss.ltcdn.cc/cow/2017/12/25/670w_310h_5E8601514188757_origin.png'
+                    picUrl:'//oss.ltcdn.cc/game/Images/mofang/tab2-base-image.png'
                 }
             )
         }

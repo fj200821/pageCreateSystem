@@ -158,7 +158,6 @@
         if(window.preView) {
             //预览模式下
             $.ajax({
-//                url: pageHost + '/api/1.0/h5/collection/page/preview',
                 url: pageHost + '/api/1.0/h5/collection/page/preview',
                 type: 'POST',
                 data: {
@@ -193,9 +192,7 @@
                         var components = res.data.components;
                         for(var i=0;i<components.length;i++){
                             Gdata.components[i].items.forEach(function(item,key){
-                                $.extend(Gdata.components[i].items[key],components[i].items[key])
-                                console.log('Gdata.components[i].items[key]:',Gdata.components[i].items[key])
-                                console.log('components[i].items[key]:',components[i].items[key])
+                                $.extend(Gdata.components[i].items[key],components[i].items[key]);
                             })
                         }
                         Build.update(Gdata);
