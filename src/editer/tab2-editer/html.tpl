@@ -11,6 +11,7 @@
         width: 100%;
         height: auto;
         text-decoration:none;
+        display: block;
     }
 </style>
 

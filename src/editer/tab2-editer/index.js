@@ -101,10 +101,10 @@ class Page extends Component {
                         <Tab1 callback={this.tab1Callback} item={this.state.items[0]} num={this.state.items.length}/>
                     </TabPane>
                     <TabPane tab="链接" key="2">
-                        <Tab1 callback={this.tab2Callback} item={this.state.items[0]}/>
+                        敬请期待
                     </TabPane>
                     <TabPane tab="游戏互动" key="3">
-                        <Tab1 callback={this.tab3Callback} item={this.state.items[0]}/>
+                        敬请期待
                     </TabPane>
                 </Tabs>
             </div>

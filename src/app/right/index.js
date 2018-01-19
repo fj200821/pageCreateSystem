@@ -17,6 +17,7 @@ class Page extends Component{
             <BaseEditer/>
             <PicEditer/>
             <TabEditer/>
+            <TabTwoEditer/>
             <TwoTabEditer/>
             <ThreeTabEditer/>
             <NewsEditer/>
