@@ -47,7 +47,10 @@ class Tab extends Component {
                 return;
             }
             if(values.planIds) {
-                values.planIds = values.planIds.split(',');
+                if(typeof values.planIds === 'string') {
+                    values.planIds = values.planIds.split(',');    
+                }
+                
             }
             values.picUrl = this.state.item.picUrl;
             if(values.type==='7'){
