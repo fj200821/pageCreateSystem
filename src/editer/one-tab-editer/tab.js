@@ -10,7 +10,7 @@ const actions = {
     6: {
         name: "指定计划",
         placeholder: "请输入计划id",
-        type: "planId"
+        type: "planIds"
     },
     7: {
         name: "指定类目",
@@ -45,6 +45,9 @@ class Tab extends Component {
             if (err) {
                 console.log('Received values of form: ', values);
                 return;
+            }
+            if(values.planIds) {
+                values.planIds = values.planIds.split(',');
             }
             values.picUrl = this.state.item.picUrl;
             if(values.type==='7'){
