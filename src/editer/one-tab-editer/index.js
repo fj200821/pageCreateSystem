@@ -20,7 +20,7 @@ class OneTabPage extends Component {
             defaultData: {
                 base:{},
                 name: '单栏',
-                type:9,
+                type:11,
                 editer: "one-tab-editer",
                 tpl:htmlTpl,
                 items: [
