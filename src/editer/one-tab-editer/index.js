@@ -1,9 +1,5 @@
-/**
- * Created by lianglili on 2017/12/04
- */
 import React, { Component } from 'react';
 import { Form, Icon, Tabs } from 'antd';
-import Util from '../../compoents/util/util';
 import Tab from './tab'
 
 let htmlTpl = require('./html.tpl');
@@ -11,7 +7,7 @@ let htmlTpl = require('./html.tpl');
 const FormItem = Form.Item;
 const TabPane = Tabs.TabPane;
 
-class TwoTabPage extends Component {
+class OneTabPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,20 +19,15 @@ class TwoTabPage extends Component {
             items:[],
             defaultData: {
                 base:{},
-                name: '两栏',
-                type:7,
-                editer: "two-tab-editer",
+                name: '单栏',
+                type:9,
+                editer: "one-tab-editer",
                 tpl:htmlTpl,
                 items: [
                     {
                         type:3,
                         noCharging:false,
-                        picUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
-                    },
-                    {
-                        type:3,
-                        noCharging:false,
-                        picUrl:'//oss.ltcdn.cc/cow/2017/12/06/347w_340h_BCF791512552241_origin.png'
+                        picUrl:'//oss.ltcdn.cc/game/Images/mofang/tab2-base-image.png'
                     }
                 ]
             }
@@ -58,7 +49,7 @@ class TwoTabPage extends Component {
     }
 
     componentDidMount() {
-        window.sendMessage('renderEditerIcon', <Icon type="appstore-o" key="appstore-o" onClick={this.add}>两栏组件</Icon>)
+        window.sendMessage('renderEditerIcon', <Icon type="appstore-o" key="appstore-o" onClick={this.add}>单栏组件</Icon>)
     }
 
     add = () => {
@@ -66,7 +57,7 @@ class TwoTabPage extends Component {
     }
 
     onMessage() {
-        window.onMessage("/editer/two-tab-editer/index.js:edit", (data, callback) => {
+        window.onMessage("/editer/one-tab-editer/index.js:edit", (data, callback) => {
             this.setState({
                 items: data.items,
                 callback: callback
@@ -75,7 +66,7 @@ class TwoTabPage extends Component {
         });
 
         window.onMessage('hideEditer',()=>{
-                this.hide();
+            this.hide();
         })
     }
 
@@ -105,6 +96,7 @@ class TwoTabPage extends Component {
     }
 
     render() {
+        console.log(this.state.items);
         let display = this.state.visible ? 'block' : 'none';
         if(!this.state.items.length){
             return <div></div>
@@ -117,11 +109,6 @@ class TwoTabPage extends Component {
                                 this.tabCallback(0, values)
                             }}/>
                         </TabPane>
-                        <TabPane tab="第二栏" key="2">
-                            <Tab item={this.state.items[1]} callback={(values) => {
-                                this.tabCallback(1, values)
-                            }}/>
-                        </TabPane>
                     </Tabs>
                 </div>
             )
@@ -129,4 +116,4 @@ class TwoTabPage extends Component {
     }
 }
 
-export default TwoTabPage;
+export default OneTabPage;
