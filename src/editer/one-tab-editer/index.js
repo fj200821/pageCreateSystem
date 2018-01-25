@@ -88,6 +88,7 @@ class OneTabPage extends Component {
 
     tabCallback = (index,values)=>{
         let items = JSON.parse(JSON.stringify(this.state.items));
+        console.log('st:',values);
         items[index] = values;
         this.setState({
             items:items
