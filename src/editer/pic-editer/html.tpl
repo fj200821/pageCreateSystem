@@ -1,1 +1,1 @@
-<div style="text-align: center;"><img src="<%=items[0].picUrl%>" style="width:<%=items[0].width%>px"/></div>
+<div style="text-align: center;"><img style="display:block;" src="<%=items[0].picUrl%>" style="width:<%=items[0].width%>px"/></div>
